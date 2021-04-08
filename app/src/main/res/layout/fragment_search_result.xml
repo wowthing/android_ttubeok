@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/green_background"
+                android:text="000에 대한 검색 결과"
+                android:textAlignment="gravity"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:textSize="30sp"
+                android:layout_gravity="center"
+                android:layout_marginTop="35sp"
+                android:layout_marginBottom="50sp"/>
+
+            <Button
+                android:id="@+id/button4"
+                android:drawableLeft="@tools:sample/avatars"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="코스1"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/white"
+                android:layout_gravity="center"
+                android:layout_marginBottom="50sp"/>
+
+            <Button
+                android:id="@+id/button5"
+                android:drawableLeft="@tools:sample/avatars"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="코스2"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/white"
+                android:layout_gravity="center"
+                android:layout_marginBottom="50sp"/>
+
+            <Button
+                android:id="@+id/button6"
+                android:drawableLeft="@tools:sample/avatars"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="코스3"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/white"
+                android:layout_gravity="center"
+                android:layout_marginBottom="50sp"/>
+
+            <Button
+                android:id="@+id/button7"
+                android:drawableLeft="@tools:sample/avatars"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="코스4"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/white"
+                android:layout_gravity="center"
+                android:layout_marginBottom="50sp"/>
+
+            <Button
+                android:id="@+id/button8"
+                android:drawableLeft="@tools:sample/avatars"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="코스5"
+                android:textStyle="bold"
+                android:textSize="25sp"
+                android:textColor="@color/black"
+                android:backgroundTint="@color/white"
+                android:layout_gravity="center"
+                android:layout_marginBottom="50sp"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
