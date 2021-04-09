@@ -5,11 +5,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="50sp"
+    android:layout_margin="50sp">
 
-    >
-
-
+    <!--에뮬레이터 돌릴 때 @tools:sample/avatars 에러 있음-->
     <TextView
         android:id="@+id/textView1"
         android:layout_width="200dp"

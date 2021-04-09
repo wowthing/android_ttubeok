@@ -3,6 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.ttubeog">
 
+    <!--현재 위치 권한-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,13 +15,19 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ttubeog"
         tools:ignore="AllowBackup">
-        <activity android:name=".MainActivity">
+
+        <!--네이버 지도-->
+        <meta-data
+            android:name="com.naver.maps.map.CLIENT_ID"
+            android:value="zuh69349nj" />
+
+        <activity android:name=".AppStart">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".MainActivity">
+        </activity>
     </application>
-
 </manifest>

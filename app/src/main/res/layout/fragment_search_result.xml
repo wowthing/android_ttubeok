@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <!--에뮬레이터 돌릴 때 @tools:sample/avatars 에러 있음-->
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -98,7 +99,6 @@
 
         </LinearLayout>
     </ScrollView>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
