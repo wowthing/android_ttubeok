@@ -34,7 +34,7 @@
 
             <Button
                 android:id="@+id/button4"
-                android:drawableLeft="@tools:sample/avatars"
+                android:drawableLeft="@drawable/logo1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="코스1"
@@ -47,7 +47,7 @@
 
             <Button
                 android:id="@+id/button5"
-                android:drawableLeft="@tools:sample/avatars"
+                android:drawableLeft="@drawable/logo1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="코스2"
@@ -60,7 +60,7 @@
 
             <Button
                 android:id="@+id/button6"
-                android:drawableLeft="@tools:sample/avatars"
+                android:drawableLeft="@drawable/logo1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="코스3"
@@ -73,7 +73,7 @@
 
             <Button
                 android:id="@+id/button7"
-                android:drawableLeft="@tools:sample/avatars"
+                android:drawableLeft="@drawable/logo1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="코스4"
@@ -86,7 +86,7 @@
 
             <Button
                 android:id="@+id/button8"
-                android:drawableLeft="@tools:sample/avatars"
+                android:drawableLeft="@drawable/logo1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="코스5"

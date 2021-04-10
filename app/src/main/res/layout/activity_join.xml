@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Join">
+
+    <EditText
+        android:id="@+id/join_id"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="23dp"
+        android:layout_marginRight="23dp"
+        android:layout_marginTop="43dp"
+        android:hint="아이디"
+        android:includeFontPadding="false"
+        android:inputType="text"
+        android:textColorHint="#d1d1d1"
+        android:textFontWeight="700"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btn_id_check"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="중복확인"
+        android:textAlignment="center"
+        android:layout_marginBottom="12dp"
+        android:layout_marginRight="5dp"
+        android:background="@drawable/register_btn"
+        app:layout_constraintBottom_toBottomOf="@+id/join_id"
+        app:layout_constraintEnd_toEndOf="@+id/join_id"
+        app:layout_constraintTop_toTopOf="@+id/join_id"
+        android:gravity="center_horizontal" />
+
+    <TextView
+        android:id="@+id/txt_id_check"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textSize="10sp"
+        android:textColor="#2ece6a"
+        android:textFontWeight="500"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:includeFontPadding="false"
+        app:layout_constraintEnd_toEndOf="@id/join_id"
+        app:layout_constraintTop_toBottomOf="@id/join_id"/>
+
+    <EditText
+        android:id="@+id/join_pw"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="23dp"
+        android:layout_marginRight="23dp"
+        android:layout_marginTop="40dp"
+        android:inputType="textPassword"
+        android:hint="비밀번호(영문,숫자,특수문자 포함 10~20자)"
+        android:includeFontPadding="false"
+        android:textColorHint="#d1d1d1"
+        android:textFontWeight="700"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/join_id" />
+
+    <TextView
+        android:id="@+id/pw_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="*영문, 숫자, 특수문자 포함 10~20자 입력해주세요."
+        android:textSize="10sp"
+        android:textFontWeight="500"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:includeFontPadding="false"
+        app:layout_constraintStart_toStartOf="@id/join_pw"
+        app:layout_constraintTop_toBottomOf="@id/join_pw"/>
+
+    <EditText
+        android:id="@+id/join_pw_check"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="23dp"
+        android:layout_marginRight="23dp"
+        android:layout_marginTop="40dp"
+        android:inputType="textPassword"
+        android:hint="비밀번호 확인"
+        android:includeFontPadding="false"
+        android:textColorHint="#d1d1d1"
+        android:textFontWeight="700"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/join_pw" />
+
+    <TextView
+        android:id="@+id/pw_check_msg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="10sp"
+        android:textFontWeight="500"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:includeFontPadding="false"
+        app:layout_constraintEnd_toEndOf="@id/join_pw_check"
+        app:layout_constraintTop_toBottomOf="@id/join_pw_check"/>
+
+    <EditText
+        android:id="@+id/join_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="23dp"
+        android:layout_marginRight="23dp"
+        android:layout_marginTop="40dp"
+        android:inputType="textPersonName"
+        android:hint="이름"
+        android:includeFontPadding="false"
+        android:textColorHint="#d1d1d1"
+        android:textFontWeight="700"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/join_pw_check" />
+
+    <Button
+        android:id="@+id/btn_join"
+        android:layout_width="250dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="228dp"
+        android:background="@drawable/login_btn"
+        android:text="회원가입"
+        android:textColor="#000000"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/join_name" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

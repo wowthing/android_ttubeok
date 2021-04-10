@@ -18,7 +18,7 @@ public class AppStart extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AppStart.this, MainActivity.class); //회원가입 연결
+                Intent intent = new Intent(AppStart.this, Join.class); //회원가입 연결
                 startActivity(intent);
             }
         });
