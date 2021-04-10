@@ -27,7 +27,7 @@ public class AppStart extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AppStart.this, MainActivity.class); //로그인 연결
+                Intent intent = new Intent(AppStart.this, Login.class); //로그인 연결
                 startActivity(intent);
             }
         });

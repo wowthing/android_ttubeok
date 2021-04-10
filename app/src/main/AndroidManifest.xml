@@ -14,8 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Ttubeog"
         tools:ignore="AllowBackup">
-        <activity android:name=".Join"></activity>
-        <!-- 네이버 지도 -->
+        <activity android:name=".Login"></activity>
+        <activity android:name=".Join" /> <!-- 네이버 지도 -->
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"
             android:value="zuh69349nj" />
@@ -27,7 +27,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".MainActivity" />
     </application>
 
 </manifest>

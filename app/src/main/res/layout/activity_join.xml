@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="23dp"
         android:layout_marginRight="23dp"
-        android:layout_marginTop="43dp"
+        android:layout_marginTop="80dp"
         android:hint="아이디"
         android:includeFontPadding="false"
         android:inputType="text"
@@ -131,7 +131,7 @@
         android:id="@+id/btn_join"
         android:layout_width="250dp"
         android:layout_height="80dp"
-        android:layout_marginTop="228dp"
+        android:layout_marginTop="452dp"
         android:background="@drawable/login_btn"
         android:text="회원가입"
         android:textColor="#000000"
@@ -139,7 +139,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/join_name" />
+        app:layout_constraintTop_toBottomOf="@+id/join_id" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
