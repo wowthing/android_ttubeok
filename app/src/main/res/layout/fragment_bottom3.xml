@@ -25,11 +25,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:padding="10dp"
+            android:textSize="20dp"
             android:text="뚜벅이" />
 
         <ImageView
-            android:layout_width="20sp"
-            android:layout_height="20sp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:src="@drawable/edit"
             android:layout_gravity="center"
             android:contentDescription="edit" />
@@ -37,10 +39,11 @@
     </GridLayout>
 
     <GridLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_gravity="fill_horizontal"
         android:layout_margin="20dp"
-        >
+        android:background="@drawable/login_btn">
 
         <ImageView
             android:layout_width="80dp"
@@ -50,46 +53,58 @@
             android:src="@drawable/notice" />
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_row="0"
-            android:layout_column="1"
             android:layout_rowWeight="1"
+            android:layout_column="1"
+            android:layout_columnWeight="1"
             android:paddingTop="10dp"
+            android:layout_gravity="center_horizontal"
+            android:textSize="20dp"
             android:text="7428" />
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_row="1"
-            android:layout_column="1"
             android:layout_rowWeight="1"
+            android:layout_gravity="center_horizontal"
+            android:layout_column="1"
+            android:textSize="15dp"
             android:text="걸음" />
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_row="0"
-            android:layout_column="2"
             android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center_horizontal"
+            android:layout_column="2"
             android:paddingTop="10dp"
+            android:textSize="20dp"
             android:text="5.06" />
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_row="1"
-            android:layout_column="2"
             android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center_horizontal"
+            android:layout_column="2"
+            android:textSize="15dp"
             android:text="KM" />
 
 
     </GridLayout>
 
     <GridLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp">
+        android:layout_margin="20dp"
+        android:background="@drawable/login_btn">
 
         <ImageView
             android:layout_width="80dp"
@@ -100,144 +115,180 @@
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_row="0"
             android:layout_column="1"
+            android:paddingTop="10dp"
+            android:textSize="15dp"
             android:layout_rowWeight="1"
-            android:padding="10dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center_horizontal"
             android:text="월" />
 
         <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:src="@drawable/circle"
             android:layout_row="1"
             android:layout_column="1"
             android:layout_rowWeight="1"
-            android:paddingLeft="8dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="10dp"
             android:contentDescription="circle"/>
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_row="0"
             android:layout_column="2"
+            android:paddingTop="10dp"
+            android:textSize="15dp"
             android:layout_rowWeight="1"
-            android:padding="10dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center_horizontal"
             android:text="화" />
 
         <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:src="@drawable/circle"
             android:layout_row="1"
             android:layout_column="2"
             android:layout_rowWeight="1"
-            android:paddingLeft="8dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="10dp"
             android:contentDescription="circle"/>
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_row="0"
             android:layout_column="3"
+            android:paddingTop="10dp"
+            android:textSize="15dp"
             android:layout_rowWeight="1"
-            android:padding="10dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center_horizontal"
             android:text="수" />
 
         <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:src="@drawable/circle"
             android:layout_row="1"
             android:layout_column="3"
             android:layout_rowWeight="1"
-            android:paddingLeft="8dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="10dp"
             android:contentDescription="circle"/>
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_row="0"
             android:layout_column="4"
+            android:paddingTop="10dp"
+            android:textSize="15dp"
             android:layout_rowWeight="1"
-            android:padding="10dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center_horizontal"
             android:text="목" />
 
         <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:src="@drawable/circle"
             android:layout_row="1"
             android:layout_column="4"
             android:layout_rowWeight="1"
-            android:paddingLeft="8dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="10dp"
             android:contentDescription="circle"/>
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_row="0"
             android:layout_column="5"
+            android:paddingTop="10dp"
+            android:textSize="15dp"
             android:layout_rowWeight="1"
-            android:padding="10dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center_horizontal"
             android:text="금" />
 
         <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:src="@drawable/circle"
             android:layout_row="1"
             android:layout_column="5"
             android:layout_rowWeight="1"
-            android:paddingLeft="8dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="10dp"
             android:contentDescription="circle"/>
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_row="0"
             android:layout_column="6"
+            android:paddingTop="10dp"
+            android:textSize="15dp"
             android:layout_rowWeight="1"
-            android:padding="10dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center_horizontal"
             android:text="토" />
 
         <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:src="@drawable/circle"
             android:layout_row="1"
             android:layout_column="6"
             android:layout_rowWeight="1"
-            android:paddingLeft="8dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="10dp"
             android:contentDescription="circle"/>
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_row="0"
             android:layout_column="7"
             android:layout_rowWeight="1"
-            android:padding="10dp"
+            android:paddingTop="10dp"
+            android:textSize="15dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center_horizontal"
             android:text="일" />
 
         <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:src="@drawable/circle"
             android:layout_row="1"
             android:layout_column="7"
             android:layout_rowWeight="1"
-            android:paddingLeft="8dp"
+            android:layout_columnWeight="1"
+            android:layout_gravity="center_horizontal"
+            android:paddingBottom="10dp"
             android:contentDescription="circle"/>
 
 
     </GridLayout>
 
     <GridLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp">
+        android:layout_margin="20dp"
+        android:background="@drawable/login_btn">
 
         <ImageView
             android:layout_width="80dp"
@@ -250,7 +301,9 @@
             android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_column="1"
+            android:layout_columnWeight="1"
             android:layout_gravity="center"
+            android:textSize="20dp"
             android:text="완료한 코스" />
 
         <TextView
@@ -258,7 +311,9 @@
             android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_column="2"
+            android:layout_columnWeight="0.5"
             android:layout_gravity="center"
+            android:textSize="20dp"
             android:text="3" />
 
         <TextView
@@ -266,7 +321,9 @@
             android:layout_height="wrap_content"
             android:layout_row="0"
             android:layout_column="3"
+            android:layout_columnWeight="1"
             android:layout_gravity="center"
+            android:textSize="20dp"
             android:text="개" />
 
 
