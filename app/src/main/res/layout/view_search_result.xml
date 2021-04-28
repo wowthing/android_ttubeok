@@ -82,6 +82,7 @@
                 android:layout_marginBottom="50sp"
                 android:drawableLeft="@drawable/map4_button"
                 android:text="코스4"
+                android:backgroundTint="@color/white"
                 android:textColor="@color/black"
                 android:textSize="25sp"
                 android:textStyle="bold" />
@@ -94,6 +95,7 @@
                 android:layout_marginBottom="50sp"
                 android:drawableLeft="@drawable/map5_button"
                 android:text="코스5"
+                android:backgroundTint="@color/white"
                 android:textColor="@color/black"
                 android:textSize="25sp"
                 android:textStyle="bold" />
