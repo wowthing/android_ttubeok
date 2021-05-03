@@ -1,5 +1,6 @@
 package com.example.ttubeog;
 
+import android.content.Intent;
 import android.nfc.Tag;
 import android.os.Bundle;
 
@@ -12,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -45,8 +47,22 @@ public class BottomFragment2 extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        setHasOptionsMenu(true);
-        return inflater.inflate(R.layout.fragment_bottom2, container, false);
+        //setHasOptionsMenu(true);
+        //return inflater.inflate(R.layout.fragment_bottom2, container, false);
+        ViewGroup rootview = (ViewGroup)inflater.inflate(R.layout.fragment_bottom2, container, false);
+        Button course_1 = (Button)rootview.findViewById(R.id.course_1);
+        course_1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), information.class);
+                //information.java로 course 이름 전달
+                //test1 대신 course 이름 변수 입력
+                String get_title = "test1";
+                intent.putExtra("get_title", get_title);
+                startActivity(intent);
+            }
+        });
+        return rootview;
     }
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {

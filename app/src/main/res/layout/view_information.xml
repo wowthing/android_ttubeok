@@ -14,7 +14,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/course_name"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
             android:background="@drawable/login_btn"
@@ -38,41 +38,41 @@
         <LinearLayout
             android:layout_width="350dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30sp"
+            android:layout_marginTop="20sp"
             android:layout_gravity="center"
             android:orientation="horizontal">
 
             <TextView
-                android:id="@+id/textView"
+                android:id="@+id/tag_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@drawable/white_background"
                 android:gravity="left"
-                android:textSize="30dp"
+                android:textSize="20dp"
                 android:text="#"
                 />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/tag_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_weight="1"
                 android:background="@drawable/white_background"
                 android:gravity="left"
-                android:textSize="30dp"
+                android:textSize="20dp"
                 android:text="#"
                 />
 
         </LinearLayout>
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/course_content"
             android:layout_width="350dp"
             android:layout_height="150dp"
-            android:layout_marginTop="30sp"
-            android:textSize="30dp"
+            android:layout_marginTop="20sp"
+            android:textSize="20dp"
             android:layout_gravity="center"
             android:background="@drawable/white_background"
             android:text="코스 설명"
