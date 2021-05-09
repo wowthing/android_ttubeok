@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "619403836793",
+    "project_id": "ttubeok-app",
+    "storage_bucket": "ttubeok-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:619403836793:android:90e6fac12fd0b97d4e83a8",
+        "android_client_info": {
+          "package_name": "com.example.ttubeog"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "619403836793-c1qelg73516trhr5st3kh430ukblh4ei.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMX3uupocAxrbPLN53pg04_0jumXhrTqc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "619403836793-c1qelg73516trhr5st3kh430ukblh4ei.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
