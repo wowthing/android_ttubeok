@@ -6,140 +6,455 @@
     android:layout_height="match_parent"
     tools:context=".Join">
 
-    <EditText
-        android:id="@+id/join_id"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="23dp"
-        android:layout_marginRight="23dp"
-        android:layout_marginTop="80dp"
-        android:hint="아이디"
-        android:includeFontPadding="false"
-        android:inputType="text"
-        android:textColorHint="#d1d1d1"
-        android:textFontWeight="700"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
 
-    <Button
-        android:id="@+id/btn_id_check"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:text="중복확인"
-        android:textAlignment="center"
-        android:layout_marginBottom="12dp"
-        android:layout_marginRight="5dp"
-        android:background="@drawable/register_btn"
-        app:layout_constraintBottom_toBottomOf="@+id/join_id"
-        app:layout_constraintEnd_toEndOf="@+id/join_id"
-        app:layout_constraintTop_toTopOf="@+id/join_id"
-        android:gravity="center_horizontal" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/txt_id_check"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="10sp"
-        android:textColor="#2ece6a"
-        android:textFontWeight="500"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="10dp"
-        android:includeFontPadding="false"
-        app:layout_constraintEnd_toEndOf="@id/join_id"
-        app:layout_constraintTop_toBottomOf="@id/join_id"/>
+            <EditText
+                android:id="@+id/join_id"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="23dp"
+                android:layout_marginRight="23dp"
+                android:layout_marginTop="60dp"
+                android:hint="아이디"
+                android:includeFontPadding="false"
+                android:inputType="text"
+                android:textColorHint="#d1d1d1"
+                android:textFontWeight="700"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/join_pw"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="23dp"
-        android:layout_marginRight="23dp"
-        android:layout_marginTop="40dp"
-        android:inputType="textPassword"
-        android:hint="비밀번호(영문,숫자,특수문자 포함 10~20자)"
-        android:includeFontPadding="false"
-        android:textColorHint="#d1d1d1"
-        android:textFontWeight="700"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/join_id" />
+            <Button
+                android:id="@+id/btn_id_check"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:text="중복확인"
+                android:textSize="14dp"
+                android:textAlignment="center"
+                android:layout_marginBottom="12dp"
+                android:layout_marginRight="5dp"
+                android:paddingBottom="0dp"
+                android:paddingTop="0dp"
+                android:background="@drawable/register_btn"
+                app:layout_constraintBottom_toBottomOf="@+id/join_id"
+                app:layout_constraintEnd_toEndOf="@+id/join_id"
+                app:layout_constraintTop_toTopOf="@+id/join_id"
+                android:gravity="center_horizontal"
+                android:onClick="btn_id_check"
+                />
 
-    <TextView
-        android:id="@+id/pw_msg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="*영문, 숫자, 특수문자 포함 10~20자 입력해주세요."
-        android:textSize="10sp"
-        android:textFontWeight="500"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="10dp"
-        android:includeFontPadding="false"
-        app:layout_constraintStart_toStartOf="@id/join_pw"
-        app:layout_constraintTop_toBottomOf="@id/join_pw"/>
+            <TextView
+                android:id="@+id/txt_id_check"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="중복된 아이디입니다. 다른 아이디를 입력해주세요."
+                android:textSize="10sp"
+                android:textColor="#2ece6a"
+                android:textFontWeight="500"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:includeFontPadding="false"
+                app:layout_constraintEnd_toEndOf="@id/join_id"
+                app:layout_constraintTop_toBottomOf="@id/join_id"/>
 
-    <EditText
-        android:id="@+id/join_pw_check"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="23dp"
-        android:layout_marginRight="23dp"
-        android:layout_marginTop="40dp"
-        android:inputType="textPassword"
-        android:hint="비밀번호 확인"
-        android:includeFontPadding="false"
-        android:textColorHint="#d1d1d1"
-        android:textFontWeight="700"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/join_pw" />
+            <EditText
+                android:id="@+id/join_pw"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="23dp"
+                android:layout_marginRight="23dp"
+                android:layout_marginTop="40dp"
+                android:inputType="textPassword"
+                android:hint="비밀번호(영문,숫자,특수문자 포함 10~20자)"
+                android:includeFontPadding="false"
+                android:textColorHint="#d1d1d1"
+                android:textFontWeight="700"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/join_id" />
 
-    <TextView
-        android:id="@+id/pw_check_msg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="10sp"
-        android:textFontWeight="500"
-        android:layout_marginTop="5dp"
-        android:layout_marginRight="10dp"
-        android:includeFontPadding="false"
-        app:layout_constraintEnd_toEndOf="@id/join_pw_check"
-        app:layout_constraintTop_toBottomOf="@id/join_pw_check"/>
+            <TextView
+                android:id="@+id/pw_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*영문, 숫자, 특수문자 포함 10~20자 입력해주세요."
+                android:textSize="10sp"
+                android:textFontWeight="500"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:includeFontPadding="false"
+                app:layout_constraintStart_toStartOf="@id/join_pw"
+                app:layout_constraintTop_toBottomOf="@id/join_pw"/>
 
-    <EditText
-        android:id="@+id/join_name"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="23dp"
-        android:layout_marginRight="23dp"
-        android:layout_marginTop="40dp"
-        android:inputType="textPersonName"
-        android:hint="이름"
-        android:includeFontPadding="false"
-        android:textColorHint="#d1d1d1"
-        android:textFontWeight="700"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/join_pw_check" />
+            <EditText
+                android:id="@+id/join_pw_check"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="23dp"
+                android:layout_marginRight="23dp"
+                android:layout_marginTop="40dp"
+                android:inputType="textPassword"
+                android:hint="비밀번호 확인"
+                android:includeFontPadding="false"
+                android:textColorHint="#d1d1d1"
+                android:textFontWeight="700"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/join_pw" />
 
-    <Button
-        android:id="@+id/btn_join"
-        android:layout_width="250dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="452dp"
-        android:background="@drawable/login_btn"
-        android:text="회원가입"
-        android:textColor="#000000"
-        android:textSize="25dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/join_id" />
+            <TextView
+                android:id="@+id/pw_check_msg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:textFontWeight="500"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="10dp"
+                android:includeFontPadding="false"
+                app:layout_constraintEnd_toEndOf="@id/join_pw_check"
+                app:layout_constraintTop_toBottomOf="@id/join_pw_check"/>
 
+            <EditText
+                android:id="@+id/join_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="23dp"
+                android:layout_marginRight="23dp"
+                android:layout_marginTop="40dp"
+                android:inputType="textPersonName"
+                android:hint="이름"
+                android:includeFontPadding="false"
+                android:textColorHint="#d1d1d1"
+                android:textFontWeight="700"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/join_pw_check" />
+
+            <TextView
+                android:id="@+id/disabled_text"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginLeft="23dp"
+                android:layout_marginRight="23dp"
+                android:layout_marginTop="40dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/join_name"
+                android:gravity="center"
+                android:text="장애 유무"
+                android:textSize="16sp"
+                />
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/animal_text"
+                app:layout_constraintTop_toBottomOf="@+id/join_name"
+                android:id="@+id/disabled_group"
+                android:orientation="horizontal">
+
+
+                <RadioButton
+                    android:id="@+id/disabled_yes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginLeft="23dp"
+                    android:gravity="center"
+                    android:text="유"
+                    />
+
+                <RadioButton
+                    android:id="@+id/disabled_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginLeft="50dp"
+                    app:layout_constraintStart_toEndOf="@+id/disabled_yes"
+                    app:layout_constraintTop_toBottomOf="@+id/join_name"
+                    android:gravity="center"
+                    android:text="무"
+                    />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/purpose_text"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginLeft="23dp"
+                android:layout_marginRight="23dp"
+                android:layout_marginTop="40dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/disabled_text"
+                android:gravity="center"
+                android:text="산책 목적"
+                android:textSize="16sp"
+                />
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/animal_text"
+                app:layout_constraintTop_toBottomOf="@+id/disabled_text"
+                android:id="@+id/purpose_group"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/purpose_exercise"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginLeft="23dp"
+                    android:gravity="center"
+                    android:text="운동"
+                    />
+
+                <RadioButton
+                    android:id="@+id/purpose_walk"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginLeft="50dp"
+                    app:layout_constraintStart_toEndOf="@+id/animal_yes"
+                    app:layout_constraintTop_toBottomOf="@+id/disabled_text"
+                    android:gravity="center"
+                    android:text="가벼운 산책"
+                    />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/animal_text"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginLeft="23dp"
+                android:layout_marginRight="23dp"
+                android:layout_marginTop="40dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/purpose_text"
+                android:gravity="center"
+                android:text="반려동물 동행 여부"
+                android:textSize="16sp"
+                />
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/animal_text"
+                app:layout_constraintTop_toBottomOf="@+id/purpose_text"
+                android:id="@+id/animal_group"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/animal_yes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginLeft="23dp"
+                    app:layout_constraintStart_toEndOf="@+id/animal_text"
+                    app:layout_constraintTop_toBottomOf="@+id/purpose_text"
+                    android:gravity="center"
+                    android:text="유"
+                    />
+
+                <RadioButton
+                    android:id="@+id/animal_no"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginLeft="50dp"
+                    app:layout_constraintStart_toEndOf="@+id/animal_yes"
+                    app:layout_constraintTop_toBottomOf="@+id/purpose_text"
+                    android:gravity="center"
+                    android:text="무"
+                    />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/time_text"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginLeft="23dp"
+                android:layout_marginRight="23dp"
+                android:layout_marginTop="40dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/animal_text"
+                android:gravity="center"
+                android:text="산책 선호 시간"
+                android:textSize="16sp"
+                />
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/animal_text"
+                app:layout_constraintTop_toBottomOf="@+id/animal_text"
+                android:id="@+id/time_group"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/time_day"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginLeft="23dp"
+                    app:layout_constraintStart_toEndOf="@+id/animal_text"
+                    app:layout_constraintTop_toBottomOf="@+id/animal_text"
+                    android:gravity="center"
+                    android:text="낮"
+                    />
+
+                <RadioButton
+                    android:id="@+id/time_night"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginLeft="50dp"
+                    app:layout_constraintStart_toEndOf="@+id/animal_yes"
+                    app:layout_constraintTop_toBottomOf="@+id/animal_text"
+                    android:gravity="center"
+                    android:text="밤"
+                    />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/length_text"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginLeft="23dp"
+                android:layout_marginRight="23dp"
+                android:layout_marginTop="40dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/time_text"
+                android:gravity="center"
+                android:text="선호 코스 길이"
+                android:textSize="16sp"
+                />
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/animal_text"
+                app:layout_constraintTop_toBottomOf="@+id/time_text"
+                android:id="@+id/length_group"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/length_short"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginLeft="23dp"
+                    app:layout_constraintStart_toEndOf="@+id/animal_text"
+                    app:layout_constraintTop_toBottomOf="@+id/time_text"
+                    android:gravity="center"
+                    android:text="짧은 코스"
+                    />
+
+                <RadioButton
+                    android:id="@+id/length_long"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginLeft="50dp"
+                    app:layout_constraintStart_toEndOf="@+id/animal_yes"
+                    app:layout_constraintTop_toBottomOf="@+id/time_text"
+                    android:gravity="center"
+                    android:text="긴 코스"
+                    />
+
+            </RadioGroup>
+
+            <TextView
+                android:id="@+id/place_text"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginLeft="23dp"
+                android:layout_marginRight="23dp"
+                android:layout_marginTop="40dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/length_text"
+                android:gravity="center"
+                android:text="선호 산책 장소"
+                android:textSize="16sp"
+                />
+
+            <RadioGroup
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/animal_text"
+                app:layout_constraintTop_toBottomOf="@+id/length_text"
+                android:id="@+id/place_group"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/place_forest"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginLeft="23dp"
+                    app:layout_constraintStart_toEndOf="@+id/animal_text"
+                    app:layout_constraintTop_toBottomOf="@+id/length_text"
+                    android:gravity="center"
+                    android:text="숲"
+                    />
+
+                <RadioButton
+                    android:id="@+id/place_city"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_marginTop="40dp"
+                    android:layout_marginLeft="50dp"
+                    app:layout_constraintStart_toEndOf="@+id/animal_yes"
+                    app:layout_constraintTop_toBottomOf="@+id/length_text"
+                    android:gravity="center"
+                    android:text="도심"
+                    />
+
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/btn_join"
+                android:layout_width="150dp"
+                android:layout_height="70dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/login_btn"
+                android:text="회원가입"
+                android:textColor="#000000"
+                android:textSize="25dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/place_text"
+                android:onClick="btn_join"/>
+
+            <TextView
+                android:id="@+id/blank"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginLeft="23dp"
+                android:layout_marginRight="23dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_join"
+                android:gravity="center"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

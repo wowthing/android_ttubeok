@@ -175,7 +175,7 @@
                 android:text="코스1" />
 
             <Button
-                android:id="@+id/button22"
+                android:id="@+id/course_2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

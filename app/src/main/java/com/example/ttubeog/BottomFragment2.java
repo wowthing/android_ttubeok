@@ -62,6 +62,20 @@ public class BottomFragment2 extends Fragment {
                 startActivity(intent);
             }
         });
+        Button course_2 = (Button)rootview.findViewById(R.id.course_2);
+        course_2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //임시로 회원가입 창 뜨게 함
+                //join.class 대신 information.class 넣기
+                Intent intent = new Intent(getActivity(), Join.class);
+                //information.java로 course 이름 전달
+                //test1 대신 course 이름 변수 입력
+                //String get_title = "test1";
+                //intent.putExtra("get_title", get_title);
+                startActivity(intent);
+            }
+        });
         return rootview;
     }
     @Override
