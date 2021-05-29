@@ -1,107 +1,209 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
 
-    <!--에뮬레이터 돌릴 때 @tools:sample/avatars 에러 있음-->
-    <ScrollView
+    <FrameLayout
+        android:id="@+id/content_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:backgroundTint="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        tools:layout_editor_absoluteX="0dp">
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
-        <LinearLayout
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:backgroundTint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            tools:layout_editor_absoluteX="0dp">
 
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="35sp"
-                android:layout_marginBottom="50sp"
-                android:background="@drawable/green_background"
-                android:padding="15sp"
-                android:text="000에 대한 검색 결과"
-                android:textAlignment="gravity"
-                android:textColor="#ffffff"
-                android:textSize="30px"
-                android:textStyle="bold" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <Button
-                android:id="@+id/button4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="50sp"
-                android:backgroundTint="@color/white"
-                android:drawableLeft="@drawable/map1_button"
-                android:text="코스1"
-                android:textColor="@color/black"
-                android:textSize="25sp"
-                android:textStyle="bold" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center"
+                    android:layout_margin="50dp"
+                    android:padding="20dp"
+                    android:background="@drawable/login_btn">
 
-            <Button
-                android:id="@+id/button5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="50sp"
-                android:backgroundTint="@color/white"
-                android:drawableLeft="@drawable/map2_button"
-                android:gravity="center"
-                android:text="코스2"
-                android:textColor="@color/black"
-                android:textSize="25sp"
-                android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/search_tag"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text="#TAG"
+                        android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/button6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="50sp"
-                android:drawableLeft="@drawable/map3_button"
-                android:text="코스3"
-                android:backgroundTint="@color/white"
-                android:textColor="@color/black"
-                android:textSize="25sp"
-                android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/result"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:text=" 에 대한 검색 결과" />
+                </LinearLayout>
 
-            <Button
-                android:id="@+id/button7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="50sp"
-                android:drawableLeft="@drawable/map4_button"
-                android:text="코스4"
-                android:backgroundTint="@color/white"
-                android:textColor="@color/black"
-                android:textSize="25sp"
-                android:textStyle="bold" />
+                <LinearLayout
+                    android:id="@+id/course_list1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/login_btn"
+                    android:layout_marginBottom="30dp"
+                    android:padding="15dp"
+                    android:layout_gravity="center">
 
-            <Button
-                android:id="@+id/button8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="50sp"
-                android:drawableLeft="@drawable/map5_button"
-                android:text="코스5"
-                android:backgroundTint="@color/white"
-                android:textColor="@color/black"
-                android:textSize="25sp"
-                android:textStyle="bold" />
+                    <Button
+                        android:id="@+id/searchcourse1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:backgroundTint="@color/white"
+                        android:drawableLeft="@drawable/map1_button"
+                        android:textColor="@color/black" />
 
-        </LinearLayout>
-    </ScrollView>
+                    <TextView
+                        android:id="@+id/search_course1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="코스1"
+                        android:layout_margin="20dp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <LinearLayout
+                    android:id="@+id/course_list2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/login_btn"
+                    android:layout_marginBottom="30dp"
+                    android:padding="15dp"
+                    android:layout_gravity="center">
+
+                    <Button
+                        android:id="@+id/searchcourse2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:backgroundTint="@color/white"
+                        android:drawableLeft="@drawable/map1_button"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/search_course2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="코스2"
+                        android:layout_margin="20dp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/course_list3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/login_btn"
+                    android:layout_marginBottom="30dp"
+                    android:padding="15dp"
+                    android:layout_gravity="center">
+
+                    <Button
+                        android:id="@+id/searchcourse3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:backgroundTint="@color/white"
+                        android:drawableLeft="@drawable/map1_button"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/search_course3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="코스3"
+                        android:layout_margin="20dp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/course_list4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/login_btn"
+                    android:layout_marginBottom="30dp"
+                    android:padding="15dp"
+                    android:layout_gravity="center">
+
+                    <Button
+                        android:id="@+id/searchcourse4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:backgroundTint="@color/white"
+                        android:drawableLeft="@drawable/map1_button"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/search_course4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="코스4"
+                        android:layout_margin="20dp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/course_list5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/login_btn"
+                    android:layout_marginBottom="30dp"
+                    android:padding="15dp"
+                    android:layout_gravity="center">
+
+                    <Button
+                        android:id="@+id/searchcourse5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:backgroundTint="@color/white"
+                        android:drawableLeft="@drawable/map1_button"
+                        android:textColor="@color/black" />
+
+                    <TextView
+                        android:id="@+id/search_course5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="코스5"
+                        android:layout_margin="20dp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </FrameLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/windowBackground"
+        app:itemIconTint="@drawable/menu_selector_color"
+        app:itemTextColor="@drawable/menu_selector_color"
+        app:itemIconSize="40dp"
+        app:menu="@menu/nav_bottom" />
+</LinearLayout>

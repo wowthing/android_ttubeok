@@ -39,18 +39,14 @@ public class BottomFragment2 extends Fragment {
     Array tag;
     int time;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //setHasOptionsMenu(true);
         //return inflater.inflate(R.layout.fragment_bottom2, container, false);
         ViewGroup rootview = (ViewGroup)inflater.inflate(R.layout.fragment_bottom2, container, false);
-        Button course_1 = (Button)rootview.findViewById(R.id.course_1);
+
+        Button course_1 = (Button)rootview.findViewById(R.id.rec_course1);
         course_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -62,7 +58,75 @@ public class BottomFragment2 extends Fragment {
                 startActivity(intent);
             }
         });
-        Button course_2 = (Button)rootview.findViewById(R.id.course_2);
+
+        //태그 검색 클릭 리스너
+        Button tag1 = (Button)rootview.findViewById(R.id.tag1);
+        tag1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), searchresult.class);
+                String searchtag = "test_tag1"; //태그 설정
+                intent.putExtra("searchtag", searchtag);
+                startActivity(intent);
+            }
+        });
+
+        Button tag2 = (Button)rootview.findViewById(R.id.tag2);
+        tag2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), searchresult.class);
+                String searchtag = "test_tag2";
+                intent.putExtra("searchtag", searchtag);
+                startActivity(intent);
+            }
+        });
+
+        Button tag3 = (Button)rootview.findViewById(R.id.tag3);
+        tag3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), searchresult.class);
+                String searchtag = "test_tag3";
+                intent.putExtra("searchtag", searchtag);
+                startActivity(intent);
+            }
+        });
+
+        Button tag4 = (Button)rootview.findViewById(R.id.tag4);
+        tag4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), searchresult.class);
+                String searchtag = "가나다";
+                intent.putExtra("searchtag", searchtag);
+                startActivity(intent);
+            }
+        });
+
+        Button tag5 = (Button)rootview.findViewById(R.id.tag5);
+        tag5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), searchresult.class);
+                String searchtag = "test_tag1";
+                intent.putExtra("searchtag", searchtag);
+                startActivity(intent);
+            }
+        });
+
+        Button tag6 = (Button)rootview.findViewById(R.id.tag6);
+        tag6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), searchresult.class);
+                String searchtag = "test_tag2";
+                intent.putExtra("searchtag", searchtag);
+                startActivity(intent);
+            }
+        });
+
+        Button course_2 = (Button)rootview.findViewById(R.id.rec_course2);
         course_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

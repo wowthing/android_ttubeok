@@ -13,7 +13,7 @@
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         tools:layout_editor_absoluteY="0dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:layout_marginBottom="20dp"
         android:background="#bac7a7">
 
@@ -21,57 +21,57 @@
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:src="@drawable/search2"
-            android:layout_marginTop="5dp"
-            />
+            android:layout_marginTop="5dp" />
 
     </LinearLayout>
 
     <LinearLayout
-            android:layout_width="match_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <Button
+            android:id="@+id/tag1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:background="@drawable/login_btn"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:text="# tag1" />
 
-            <Button
-                android:id="@+id/button10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_margin="10dp"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                android:background="@drawable/login_btn"
-                android:textColor="@color/black"
-                android:textAlignment="textStart"
-                android:text="#"
-                android:gravity="start" />
+        <Button
+            android:id="@+id/tag2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:background="@drawable/login_btn"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:text="# TAG2" />
 
-            <Button
-                android:id="@+id/button11"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_margin="10dp"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                android:background="@drawable/login_btn"
-                android:textColor="@color/black"
-                android:textAlignment="textStart"
-                android:text="#"
-                android:gravity="start" />
-
-            <Button
-                android:id="@+id/button12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_margin="10dp"
-                android:textSize="20dp"
-                android:textStyle="bold"
-                android:background="@drawable/login_btn"
-                android:textColor="@color/black"
-                android:textAlignment="textStart"
-                android:text="#"
-                android:gravity="start" />
+        <Button
+            android:id="@+id/tag3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_margin="10dp"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:background="@drawable/login_btn"
+            android:textColor="@color/black"
+            android:gravity="center"
+            android:textAlignment="center"
+            android:text="# TAG3" />
     </LinearLayout>
 
     <LinearLayout
@@ -80,7 +80,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/button13"
+            android:id="@+id/tag4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -89,12 +89,12 @@
             android:textStyle="bold"
             android:background="@drawable/login_btn"
             android:textColor="@color/black"
-            android:textAlignment="textStart"
-            android:text="#"
-            android:gravity="start" />
+            android:gravity="center"
+            android:textAlignment="center"
+            android:text="# TAG4" />
 
         <Button
-            android:id="@+id/button14"
+            android:id="@+id/tag5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -103,12 +103,12 @@
             android:textStyle="bold"
             android:background="@drawable/login_btn"
             android:textColor="@color/black"
-            android:textAlignment="textStart"
-            android:text="#"
-            android:gravity="start" />
+            android:gravity="center"
+            android:textAlignment="center"
+            android:text="# TAG5" />
 
         <Button
-            android:id="@+id/button15"
+            android:id="@+id/tag6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -117,9 +117,9 @@
             android:textStyle="bold"
             android:background="@drawable/login_btn"
             android:textColor="@color/black"
-            android:textAlignment="textStart"
-            android:text="#"
-            android:gravity="start" />
+            android:gravity="center"
+            android:textAlignment="center"
+            android:text="# TAG6" />
     </LinearLayout>
 
     <LinearLayout
@@ -127,11 +127,12 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_margin="20dp"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="30dp"
         android:layout_gravity="center">
 
         <TextView
-            android:id="@+id/textView5"
+            android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="25dp"
@@ -139,7 +140,7 @@
             android:text="뚜벅이" />
 
         <TextView
-            android:id="@+id/textView6"
+            android:id="@+id/recommend"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="25dp"
@@ -162,7 +163,7 @@
 
 
             <Button
-                android:id="@+id/course_1"
+                android:id="@+id/rec_course1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/login_btn"
@@ -175,7 +176,7 @@
                 android:text="코스1" />
 
             <Button
-                android:id="@+id/course_2"
+                android:id="@+id/rec_course2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
