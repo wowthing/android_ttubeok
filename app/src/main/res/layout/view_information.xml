@@ -50,6 +50,7 @@
                 android:background="@drawable/white_background"
                 android:gravity="left"
                 android:textSize="20dp"
+                android:padding="15sp"
                 android:text="#"
                 />
 
@@ -62,6 +63,7 @@
                 android:background="@drawable/white_background"
                 android:gravity="left"
                 android:textSize="20dp"
+                android:padding="15sp"
                 android:text="#"
                 />
 

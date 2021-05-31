@@ -23,6 +23,13 @@
             android:src="@drawable/search2"
             android:layout_marginTop="5dp" />
 
+        <Button
+            android:id="@+id/connect_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:text="connect"
+            android:visibility="invisible" />
+
     </LinearLayout>
 
     <LinearLayout
