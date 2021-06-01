@@ -155,7 +155,7 @@ public class BottomFragment2 extends Fragment {
             public void onClick(View v) {
                 //임시로 회원가입 창 뜨게 함
                 //join.class 대신 information.class 넣기
-                Intent intent = new Intent(getActivity(), Join.class);
+                Intent intent = new Intent(getActivity(), resultScore.class);
                 //information.java로 course 이름 전달
                 //test1 대신 course 이름 변수 입력
                 //String get_title = "test1";
