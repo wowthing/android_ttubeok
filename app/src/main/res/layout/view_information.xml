@@ -83,15 +83,15 @@
         <Button
             android:id="@+id/choose_button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/login_btn"
+            android:layout_height="36dp"
             android:layout_gravity="right"
-            android:layout_marginRight="30sp"
             android:layout_marginTop="20dp"
+            android:layout_marginRight="30sp"
+            android:background="@drawable/login_btn"
             android:text="선택"
-            android:textSize="25dp"
             android:textColor="@color/black"
-            />
+            android:textSize="25dp"
+            android:onClick="onClick"/>
 
     </LinearLayout>
 

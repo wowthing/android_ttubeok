@@ -103,4 +103,9 @@ public class information extends Activity implements OnMapReadyCallback {
     public void onMapReady(@NonNull NaverMap naverMap) {
 
     }
+
+    public void onClick(View view) {
+        Intent intent = new Intent(this,measure.class);
+        startActivity(intent);
+    }
 }

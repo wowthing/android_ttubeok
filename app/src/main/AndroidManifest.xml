@@ -30,6 +30,7 @@
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
         </activity>
+        <activity android:name=".measure"/>
         <activity android:name=".searchresult"/>
         <activity android:name=".search"/>
         <activity android:name=".information"/>
