@@ -3,6 +3,7 @@ package com.example.ttubeog;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -79,14 +80,16 @@ public class information extends Activity implements OnMapReadyCallback {
                         //Log.d(TAG, "tag: " + tag.get(0));
                         time = document.getLong("time").intValue();
                         //Log.d(TAG, "time: " + time);
-                        content = document.getString("content");
+                        content = document.getString("contents");
                         //Log.d(TAG, "content: " + content);
+                        String name = document.getString("name");
 
-                        course_name.setText(get_name);
+                        course_name.setText(name);
                         //Map 띄우기
                         tag_1.setText("#" + (CharSequence) tag.get(0));
                         tag_2.setText("#" + (CharSequence) tag.get(1));
                         course_content.setText(content);
+                        course_content.setMovementMethod(new ScrollingMovementMethod());
 
 
                     } else {
@@ -104,8 +107,10 @@ public class information extends Activity implements OnMapReadyCallback {
 
     }
 
+    /*measure 액티비티가 없는 것 같아 일단 주석 처리 해놓겠습니다.
+    나중에 수정하실 때 주석 삭제해주세요!
     public void onClick(View view) {
-        Intent intent = new Intent(this,measure.class);
+        Intent intent = new Intent(this, measure.class);
         startActivity(intent);
-    }
+    }*/
 }
