@@ -75,7 +75,7 @@
             <Button
                 android:id="@+id/pause_button"
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="50dp"
                 android:background="@drawable/login_btn"
                 android:text="일시정지"
                 android:textColor="@color/black"
@@ -88,6 +88,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/login_btn"
                 android:layout_marginRight="20dp"
+                android:layout_marginTop="15dp"
                 android:layout_gravity="right"
                 android:text="종료"
                 android:textColor="@color/black"
