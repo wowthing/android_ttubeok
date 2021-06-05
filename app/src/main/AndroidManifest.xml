@@ -25,16 +25,18 @@
 
         <activity android:name=".AppStart" />
         <activity android:name=".MainActivity">
+
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
         </activity>
-        <activity android:name=".measure"/>
+
         <activity android:name=".searchresult"/>
         <activity android:name=".search"/>
         <activity android:name=".information"/>
         <activity android:name=".resultScore"/>
+        <activity android:name=".measure"/>
     </application>
 
 </manifest>

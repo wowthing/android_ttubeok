@@ -86,8 +86,7 @@
             android:background="@drawable/login_btn"
             android:text="선택"
             android:textColor="@color/black"
-            android:textSize="25dp"
-            android:onClick="onClick"/>
+            android:textSize="25dp" />
 
     </LinearLayout>
 

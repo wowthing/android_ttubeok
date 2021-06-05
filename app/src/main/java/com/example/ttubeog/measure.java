@@ -21,9 +21,11 @@ public class measure extends AppCompatActivity {
     private Boolean isRunning = true;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_measure);
+
+
 
         if (Build.VERSION.SDK_INT >= 21) {
             getWindow().setStatusBarColor(Color.parseColor("#4ea1d3"));
@@ -34,7 +36,6 @@ public class measure extends AppCompatActivity {
 
         mPauseBtn = (Button) findViewById(R.id.pause_button);
         mTimeTextView = (TextView) findViewById(R.id.timeView);
-
 
         mStartBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,12 +53,6 @@ public class measure extends AppCompatActivity {
             }
         });
 
-        mRecordBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mRecordTextView.setText(mRecordTextView.getText() + mTimeTextView.getText().toString() + "\n");
-            }
-        });
 
         mPauseBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,10 +109,8 @@ public class measure extends AppCompatActivity {
     }
 
 
-    public void onClick(View view) {
-        Intent intent = new Intent(this,resultScore.class);
-        startActivity(intent);
-    }
+
+
 }
 
 

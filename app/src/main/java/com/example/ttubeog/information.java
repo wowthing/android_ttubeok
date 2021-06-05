@@ -43,12 +43,24 @@ public class information extends Activity implements OnMapReadyCallback {
     String content;
     GeoPoint location;
     List<Map<String, String>> tag;
+    Button btn;
     int time;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_information);
+
+        btn=findViewById(R.id.choose_button);
+
+        btn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), measure.class);
+                startActivity(intent);
+            }
+        });
+
 
         //BottomFragment에서 코스 이름 가져오기
         Intent secondIntent = getIntent();
@@ -107,10 +119,6 @@ public class information extends Activity implements OnMapReadyCallback {
 
     }
 
-    /*measure 액티비티가 없는 것 같아 일단 주석 처리 해놓겠습니다.
-    나중에 수정하실 때 주석 삭제해주세요!
-    public void onClick(View view) {
-        Intent intent = new Intent(this, measure.class);
-        startActivity(intent);
-    }*/
+
+
 }
