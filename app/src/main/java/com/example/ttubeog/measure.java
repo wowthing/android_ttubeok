@@ -50,9 +50,12 @@ public class measure extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 timeThread.interrupt();
+                //종료시 resultScore로 이동
+                Intent intent = new Intent(getApplicationContext(), resultScore.class);
+                startActivity(intent);
+
             }
         });
-
 
         mPauseBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,7 +88,6 @@ public class measure extends AppCompatActivity {
         @Override
         public void run() {
             int i = 0;
-
             while (true) {
                 while (isRunning) { //일시정지를 누르면 멈춤
                     Message msg = new Message();
@@ -96,23 +98,12 @@ public class measure extends AppCompatActivity {
                         Thread.sleep(10);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
-                        runOnUiThread(new Runnable(){
-                            @Override
-                            public void run() {
-                                mTimeTextView.setText("");
-                                mTimeTextView.setText("00:00:00:00");
-                            }
-                        });
-                        return; // 인터럽트 받을 경우 return
+                        return;
                     }
                 }
             }
         }
     }
-
-
-
-
 }
 
 
