@@ -42,62 +42,56 @@
 
 
         </LinearLayout>
+
         <TextView
             android:id="@+id/timeView"
             android:layout_width="match_parent"
+            android:layout_height="80dp"
             android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
             android:layout_marginRight="20dp"
-            android:layout_height="100dp"
-            android:gravity="center"
-            android:layout_marginTop="20sp"
             android:background="@drawable/white_background"
+            android:gravity="center"
             android:text="00:00:00:00"
             android:textColor="@color/black"
             android:textSize="35dp"
             android:textStyle="bold" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <RelativeLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="23dp"
-            android:orientation="horizontal">
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp">
 
             <Button
                 android:id="@+id/start_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginRight="5dp"
-                android:layout_marginLeft="30dp"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
                 android:background="@drawable/login_btn"
                 android:text="시작"
                 android:textColor="@color/black"
                 android:textSize="25dp" />
             <Button
                 android:id="@+id/pause_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginRight="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
                 android:background="@drawable/login_btn"
-                android:text="중지"
+                android:text="일시정지"
                 android:textColor="@color/black"
-                android:textSize="25dp" />
-
+                android:textSize="25dp"
+                android:visibility="invisible"/>
+        </RelativeLayout>
             <Button
                 android:id="@+id/stop_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginRight="30dp"
                 android:background="@drawable/login_btn"
-                android:onClick="onClick"
+                android:layout_marginRight="20dp"
+                android:layout_gravity="right"
                 android:text="종료"
                 android:textColor="@color/black"
                 android:textSize="25dp" />
-
-        </LinearLayout>
-
 
     </LinearLayout>
 
