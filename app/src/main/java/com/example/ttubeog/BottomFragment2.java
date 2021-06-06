@@ -14,8 +14,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.api.Api;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
@@ -36,6 +38,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.lang.reflect.Array;
+import java.net.InetAddress;
 import java.net.Socket;
 import java.util.Map;
 
@@ -61,6 +64,8 @@ public class BottomFragment2 extends Fragment {
     int int_length;
     int int_place;
     int int_purpose;
+
+    TextView connect_txt;
 
     @Nullable
     @Override
@@ -155,7 +160,7 @@ public class BottomFragment2 extends Fragment {
             public void onClick(View v) {
                 //임시로 회원가입 창 뜨게 함
                 //join.class 대신 information.class 넣기
-                Intent intent = new Intent(getActivity(), resultScore.class);
+                Intent intent = new Intent(getActivity(),Join.class);
                 //information.java로 course 이름 전달
                 //test1 대신 course 이름 변수 입력
                 //String get_title = "test1";
@@ -164,8 +169,9 @@ public class BottomFragment2 extends Fragment {
             }
         });
 
-        //추가
-        Button connect_btn = (Button)rootview.findViewById(R.id.connect_btn);
+        connect_txt = (TextView)rootview.findViewById(R.id.connect_txt);
+        GetUserDataThread getUserDataThread = new GetUserDataThread();
+        getUserDataThread.start();
 
         return rootview;
     }
@@ -252,36 +258,11 @@ public class BottomFragment2 extends Fragment {
                 });
     }
 
-    public static void recommend() {
-        try {
-            Socket socket = new Socket("192.168.123.104", 9999); // 소켓 서버에 접속
-            System.out.println("socket 서버에 접속 성공!");
-            //Log.d(TAG, document.getId() + " => " + document.getData());
+    private class GetUserDataThread extends Thread {
 
-            // OutputStream - 클라이언트에서 Server로 메세지 발송
-            OutputStream out = socket.getOutputStream();
-            // socket의 OutputStream 정보를 OutputStream out에 넣은 뒤
-            PrintWriter writer = new PrintWriter(out, true);
-            // PrintWriter에 위 OutputStream을 담아 사용
-
-            writer.println("CLIENT TO SERVER");
-            // 클라이언트에서 서버로 메세지 보내기
-
-            // InputStream - Server에서 보낸 메세지 클라이언트로 가져옴
-            InputStream input = socket.getInputStream();
-            // socket의 InputStream 정보를 InputStream in에 넣은 뒤
-            BufferedReader reader = new BufferedReader(new InputStreamReader(input));
-            // BufferedReader에 위 InputStream을 담아 사용
-
-            System.out.println(reader.readLine());
-            // 서버에서 온 메세지 확인
-            System.out.println("CLIENT SOCKET CLOSE");
-            socket.close(); // 소켓 종료
-
-        } catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+        public void run(){
+            Client client = new Client();
+            connect_txt.setText(client.clientTest());
         }
     }
-
 }
