@@ -309,6 +309,7 @@
             android:text="완료한 코스" />
 
         <TextView
+            android:id="@+id/course_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_row="0"

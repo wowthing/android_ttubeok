@@ -29,6 +29,7 @@ public class BottomFragment3 extends Fragment {
 
     String course_length;
     String step_count;
+    String count;
 
 
     @Nullable
@@ -52,6 +53,7 @@ public class BottomFragment3 extends Fragment {
                     if (document.exists()) {
                         step_count = document.getLong("step_count").toString();
                         course_length = document.getLong("course_length").toString();
+                        count = document.getLong("course_count").toString();
 
                         //걸음 수 및 이동 거리
                         TextView step_count_view = (TextView)view.findViewById(R.id.step_count_view);
@@ -61,6 +63,9 @@ public class BottomFragment3 extends Fragment {
                         TextView course_length_view = (TextView)view.findViewById(R.id.course_length_view);
                         course_length_view.setText(course_length);
 
+                        TextView course_count = (TextView)view.findViewById(R.id.course_count);
+                        course_count.setText(count);
+
                     } else {
                         Log.d(TAG, "No such document");
                     }
@@ -69,8 +74,6 @@ public class BottomFragment3 extends Fragment {
                 }
             }
         });
-
-
 
     }
 }
