@@ -24,12 +24,14 @@
             android:textSize="30dp"
             android:text="코스 이름" />
 
-        <com.naver.maps.map.MapView
-            android:id="@+id/map_view"
+        <ImageView
+            android:id="@+id/image_view"
             android:layout_width="350dp"
             android:layout_height="200dp"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
+            android:padding="3dp"
+            android:scaleType="fitXY"
             android:background="@drawable/login_btn" />
 
         <LinearLayout
