@@ -22,6 +22,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.firestore.auth.User;
 
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -154,6 +155,32 @@ public class resultScore extends Activity {
         user_data.put("step_count", past_step_count + step_count);
         user_data.put("course_length", past_course_length + course_length);
         user_data.put("course_count", course_count + 1);
+
+        Calendar cal=Calendar.getInstance();
+        int dayOfWeek=cal.get(Calendar.DAY_OF_WEEK);
+        switch(dayOfWeek){
+            case 1:
+                user_data.put("daySun",true);
+                break;
+            case 2:
+                user_data.put("dayMon",true);
+                break;
+            case 3:
+                user_data.put("dayTue",true);
+                break;
+            case 4:
+                user_data.put("dayWen",true);
+                break;
+            case 5:
+                user_data.put("dayThu",true);
+                break;
+            case 6:
+                user_data.put("dayFri",true);
+                break;
+            case 7:
+                user_data.put("daySat",true);
+                break;
+        }
         db.collection("user").document(get_user)
                 .set(user_data, SetOptions.merge())
                 .addOnFailureListener(new OnFailureListener() {
