@@ -22,7 +22,9 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.firestore.auth.User;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -155,7 +157,7 @@ public class resultScore extends Activity {
         user_data.put("step_count", past_step_count + step_count);
         user_data.put("course_length", past_course_length + course_length);
         user_data.put("course_count", course_count + 1);
-
+        //현재요일 구해서 운동한 날 DB에 저장
         Calendar cal=Calendar.getInstance();
         int dayOfWeek=cal.get(Calendar.DAY_OF_WEEK);
         switch(dayOfWeek){
@@ -180,6 +182,21 @@ public class resultScore extends Activity {
             case 7:
                 user_data.put("daySat",true);
                 break;
+        }
+        //일요일되면 주간 운동날짜 초기화
+        long now = System.currentTimeMillis();
+        Date date = new Date(now);
+        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+        String getTime = dateFormat.format(date);
+
+        if(dayOfWeek==3&&getTime=="11:35:00"){
+            user_data.put("daySun",false);
+            user_data.put("dayMon",false);
+            user_data.put("dayTue",false);
+            user_data.put("dayWen",false);
+            user_data.put("dayThu",false);
+            user_data.put("dayFri",false);
+            user_data.put("daySat",false);
         }
         db.collection("user").document(get_user)
                 .set(user_data, SetOptions.merge())

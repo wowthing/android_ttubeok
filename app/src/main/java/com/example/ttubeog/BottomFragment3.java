@@ -15,17 +15,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 
 import org.w3c.dom.Text;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 public class BottomFragment3 extends Fragment {
 
@@ -63,6 +67,34 @@ public class BottomFragment3 extends Fragment {
                         step_count = document.getLong("step_count").toString();
                         course_length = document.getLong("course_length").toString();
                         count = document.getLong("course_count").toString();
+
+                        FirebaseFirestore db = FirebaseFirestore.getInstance();
+                        //일요일되면 주간 운동날짜 초기화
+                        String get_user = "test_1";
+                        Map<String, Object> user_data = new HashMap<>();
+                        long now = System.currentTimeMillis();
+                        Date date = new Date(now);
+                        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+                        String getTime = dateFormat.format(date);
+                        Calendar cal=Calendar.getInstance();
+                        int dayOfWeek=cal.get(Calendar.DAY_OF_WEEK);
+                        if(dayOfWeek==1||getTime=="00:00:00"){
+                            user_data.put("daySun",false);
+                            user_data.put("dayMon",false);
+                            user_data.put("dayTue",false);
+                            user_data.put("dayWen",false);
+                            user_data.put("dayThu",false);
+                            user_data.put("dayFri",false);
+                            user_data.put("daySat",false);
+                        }
+                        db.collection("user").document(get_user)
+                                .set(user_data, SetOptions.merge())
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                        Log.w(TAG, "Error adding document", e);
+                                    }
+                                });
 
                         today[1]=document.getBoolean("dayMon");
                         today[2]=document.getBoolean("dayTue");
