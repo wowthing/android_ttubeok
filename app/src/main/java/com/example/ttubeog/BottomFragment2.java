@@ -1,57 +1,36 @@
 package com.example.ttubeog;
 
 import android.content.Intent;
-import android.nfc.Tag;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.common.api.Api;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.GeoPoint;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.firebase.firestore.model.Document;
 
-import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.lang.reflect.Array;
-import java.net.InetAddress;
-import java.net.Socket;
 import java.util.Map;
-
-import static android.content.ContentValues.TAG;
 
 public class BottomFragment2 extends Fragment {
 
     String TAG = "BottomFragment2_log";
 
     String id;
-    String content;
-    GeoPoint location;
-    Array tag;
 
     String animal;
     String time;
@@ -66,6 +45,12 @@ public class BottomFragment2 extends Fragment {
     int int_purpose;
 
     TextView connect_txt;
+
+    String get_recommendations;
+    String[] recommendations;
+    String recommendation_1;
+    String recommendation_1_name;
+    String recommendation_2;
 
     @Nullable
     @Override
@@ -146,9 +131,8 @@ public class BottomFragment2 extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), information.class);
-                //information.java로 course 이름 전달
-                //test1 대신 course 이름 변수 입력
-                String get_title = "test1";
+                String get_title = recommendation_1;
+                course_1.setText(recommendation_1_name);
                 intent.putExtra("get_title", get_title);
                 startActivity(intent);
             }
@@ -181,23 +165,29 @@ public class BottomFragment2 extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        db.collection("course")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        // 데이터를 가져오는 작업이 잘 동작했을 떄
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                //Log.d(TAG, document.getId() + " => " + document.getData());
-                            }
-                        }
-                        // 데이터를 가져오는 작업이 에러났을 때
-                        else {
-                            Log.w(TAG, "Error => ", task.getException());
-                        }
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        DocumentReference docRef = db.collection("user_base").document(recommendations[0]);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        recommendation_1 = (String) document.get("rec_1");
+                        recommendation_1_name = (String) document.get("name_1");
+                    } else {
+                        Log.d(TAG, "No such document");
                     }
-                });
+                } else {
+                    Log.d(TAG, "get failed with ", task.getException());
+                }
+            }
+        });
 
         db.collection("user")
                 .get()
@@ -262,7 +252,12 @@ public class BottomFragment2 extends Fragment {
 
         public void run(){
             Client client = new Client();
-            connect_txt.setText(client.clientTest());
+            get_recommendations = client.clientTest();
+            connect_txt.setText(get_recommendations);
+            recommendations = get_recommendations.split(",");
+            for(int i = 0; i< recommendations.length; i++){
+                Log.d(TAG, recommendations[i]);
+            }
         }
     }
 }

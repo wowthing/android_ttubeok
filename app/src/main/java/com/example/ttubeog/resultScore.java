@@ -62,7 +62,7 @@ public class resultScore extends Activity implements OnMapReadyCallback{
     //코스 측정화면에서 get_name으로 코스 이름 받아오기
     //코스 측정화면에서 get_user로 유저 이름 받아오기
     String get_user = "test_1";
-    String get_name = "course_1";
+    String get_name = "course_2";
 
     private MapView mapView;
     private static NaverMap naverMap;
