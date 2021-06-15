@@ -19,9 +19,18 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.GeoPoint;
 import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.firestore.auth.User;
+import com.naver.maps.geometry.LatLng;
+import com.naver.maps.map.CameraPosition;
+import com.naver.maps.map.MapFragment;
+import com.naver.maps.map.MapView;
+import com.naver.maps.map.NaverMap;
+import com.naver.maps.map.OnMapReadyCallback;
+import com.naver.maps.map.overlay.Marker;
 
+import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -30,7 +39,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public class resultScore extends Activity {
+public class resultScore extends Activity implements OnMapReadyCallback{
 
     String TAG = "resultScore_log";
 
@@ -46,16 +55,26 @@ public class resultScore extends Activity {
     float step_count; // 걸음 수 누적 기록
     float course_length;
     float past_course_length;
+    float loc_long;
+    float loc_la;
 
     //코스 측정화면에서 get_name으로 코스 이름 받아오기
     //코스 측정화면에서 get_user로 유저 이름 받아오기
     String get_user = "test_1";
-    String get_name = "test1";
+    String get_name = "course_1";
+
+    private MapView mapView;
+    private static NaverMap naverMap;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_resultscore);
+
+        mapView = (MapView) findViewById(R.id.map_view);
+        mapView.onCreate(savedInstanceState);
+        mapView.getMapAsync(this);
 
         //BottomFragment에서 코스 이름 가져오기
         //measure.java에서 걸은 시간, 걸음 수 가져옴
@@ -87,8 +106,11 @@ public class resultScore extends Activity {
                     if (document.exists()) {
                         rating_count = document.getLong("rating_count").intValue();
                         rating_total = document.getLong("rating_total").intValue();
-                        Log.d(TAG, "가져온 rating_count: " + rating_count);
-                        Log.d(TAG, "가져온 rating_total: " + rating_total);
+                        loc_la = document.getLong("loc_la").floatValue();
+                        loc_long = document.getLong("loc_long").floatValue();
+                        //Log.d(TAG, "가져온 rating_count: " + rating_count);
+                        //Log.d(TAG, "가져온 rating_total: " + rating_total);
+                        Log.d(TAG, "가져온 location: " + loc_la + loc_long);
                     } else {
                         Log.d(TAG, "No such document");
                     }
@@ -117,6 +139,15 @@ public class resultScore extends Activity {
                 }
             }
         });
+    }
+
+    @Override
+    public void onMapReady(@NonNull NaverMap naverMap) {
+        this.naverMap = naverMap;
+        CameraPosition cameraPosition = new CameraPosition(
+                new LatLng(loc_la, loc_long), 15
+        );
+        naverMap.setCameraPosition(cameraPosition);
     }
 
     class Listener implements RatingBar.OnRatingBarChangeListener{
