@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             infoWindow.close();
         });
 
-        //마커, 클릭이벤트 설정 (06-03 현재 창포원만 테스트)
+        //마커, 클릭이벤트 설정
         //창포원
         Marker marker1 = new Marker();
         marker1.setPosition(new LatLng(37.6895437, 127.0478874));

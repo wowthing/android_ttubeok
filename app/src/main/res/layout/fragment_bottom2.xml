@@ -44,13 +44,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_margin="10dp"
-            android:textSize="20dp"
+            android:textSize="18dp"
             android:textStyle="bold"
             android:background="@drawable/login_btn"
             android:textColor="@color/black"
             android:gravity="center"
             android:textAlignment="center"
-            android:text="# tag1" />
+            android:text="# 야경" />
 
         <Button
             android:id="@+id/tag2"
@@ -58,13 +58,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_margin="10dp"
-            android:textSize="20dp"
+            android:textSize="18dp"
             android:textStyle="bold"
             android:background="@drawable/login_btn"
             android:textColor="@color/black"
             android:gravity="center"
             android:textAlignment="center"
-            android:text="# TAG2" />
+            android:text="# 짧은 코스" />
 
         <Button
             android:id="@+id/tag3"
@@ -72,13 +72,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_margin="10dp"
-            android:textSize="20dp"
+            android:textSize="18dp"
             android:textStyle="bold"
             android:background="@drawable/login_btn"
             android:textColor="@color/black"
             android:gravity="center"
             android:textAlignment="center"
-            android:text="# TAG3" />
+            android:text="# 긴 코스" />
     </LinearLayout>
 
     <LinearLayout
@@ -92,13 +92,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_margin="10dp"
-            android:textSize="20dp"
+            android:textSize="18dp"
             android:textStyle="bold"
             android:background="@drawable/login_btn"
             android:textColor="@color/black"
             android:gravity="center"
             android:textAlignment="center"
-            android:text="# TAG4" />
+            android:text="# 숲속" />
 
         <Button
             android:id="@+id/tag5"
@@ -106,13 +106,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_margin="10dp"
-            android:textSize="20dp"
+            android:textSize="18dp"
             android:textStyle="bold"
             android:background="@drawable/login_btn"
             android:textColor="@color/black"
             android:gravity="center"
             android:textAlignment="center"
-            android:text="# TAG5" />
+            android:text="# 도심" />
 
         <Button
             android:id="@+id/tag6"
@@ -120,13 +120,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_margin="10dp"
-            android:textSize="20dp"
+            android:textSize="18dp"
             android:textStyle="bold"
             android:background="@drawable/login_btn"
             android:textColor="@color/black"
             android:gravity="center"
             android:textAlignment="center"
-            android:text="# TAG6" />
+            android:text="# 운동" />
     </LinearLayout>
 
     <LinearLayout

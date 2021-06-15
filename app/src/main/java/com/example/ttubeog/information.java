@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
@@ -40,7 +41,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicMarkableReference;
 
 
-public class information extends Activity {
+public class information extends AppCompatActivity {
 
     TextView course_name;
     TextView tag_1;
@@ -66,6 +67,7 @@ public class information extends Activity {
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), measure.class);
                 startActivity(intent);
+                finish();
             }
         });
 

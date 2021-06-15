@@ -80,7 +80,7 @@ public class BottomFragment2 extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), searchresult.class);
-                String searchtag = "test_tag1"; //태그 설정
+                String searchtag = "밤에도 걸을 수 있는"; //태그 설정
                 intent.putExtra("searchtag", searchtag);
                 startActivity(intent);
             }
@@ -91,7 +91,7 @@ public class BottomFragment2 extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), searchresult.class);
-                String searchtag = "test_tag2";
+                String searchtag = "코스 길이가 짧은";
                 intent.putExtra("searchtag", searchtag);
                 startActivity(intent);
             }
@@ -102,7 +102,7 @@ public class BottomFragment2 extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), searchresult.class);
-                String searchtag = "test_tag3";
+                String searchtag = "코스 길이가 긴";
                 intent.putExtra("searchtag", searchtag);
                 startActivity(intent);
             }
@@ -113,7 +113,7 @@ public class BottomFragment2 extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), searchresult.class);
-                String searchtag = "가나다";
+                String searchtag = "숲을 즐길 수 있는";
                 intent.putExtra("searchtag", searchtag);
                 startActivity(intent);
             }
@@ -124,7 +124,7 @@ public class BottomFragment2 extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), searchresult.class);
-                String searchtag = "test_tag1";
+                String searchtag = "접근이 편한 도심에 있는";
                 intent.putExtra("searchtag", searchtag);
                 startActivity(intent);
             }
@@ -135,7 +135,7 @@ public class BottomFragment2 extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), searchresult.class);
-                String searchtag = "test_tag2";
+                String searchtag = "운동 목적인";
                 intent.putExtra("searchtag", searchtag);
                 startActivity(intent);
             }

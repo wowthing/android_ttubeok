@@ -59,14 +59,16 @@
                     android:padding="15dp"
                     android:layout_gravity="center">
 
-                    <Button
+                    <ImageView
                         android:id="@+id/searchcourse1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="10dp"
                         android:layout_gravity="center"
                         android:backgroundTint="@color/white"
                         android:drawableLeft="@drawable/map1_button"
-                        android:textColor="@color/black" />
+                        android:scaleType="fitXY" />
 
                     <TextView
                         android:id="@+id/search_course1"
@@ -89,14 +91,15 @@
                     android:padding="15dp"
                     android:layout_gravity="center">
 
-                    <Button
+                    <ImageView
                         android:id="@+id/searchcourse2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginLeft="20dp"
                         android:layout_gravity="center"
                         android:backgroundTint="@color/white"
                         android:drawableLeft="@drawable/map1_button"
-                        android:textColor="@color/black" />
+                        android:scaleType="fitXY" />
 
                     <TextView
                         android:id="@+id/search_course2"
@@ -118,14 +121,15 @@
                     android:padding="15dp"
                     android:layout_gravity="center">
 
-                    <Button
+                    <ImageView
                         android:id="@+id/searchcourse3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginLeft="20dp"
                         android:layout_gravity="center"
                         android:backgroundTint="@color/white"
                         android:drawableLeft="@drawable/map1_button"
-                        android:textColor="@color/black" />
+                        android:scaleType="fitXY" />
 
                     <TextView
                         android:id="@+id/search_course3"
@@ -147,14 +151,15 @@
                     android:padding="15dp"
                     android:layout_gravity="center">
 
-                    <Button
+                    <ImageView
                         android:id="@+id/searchcourse4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginLeft="20dp"
                         android:layout_gravity="center"
                         android:backgroundTint="@color/white"
                         android:drawableLeft="@drawable/map1_button"
-                        android:textColor="@color/black" />
+                        android:scaleType="fitXY" />
 
                     <TextView
                         android:id="@+id/search_course4"
@@ -176,14 +181,15 @@
                     android:padding="15dp"
                     android:layout_gravity="center">
 
-                    <Button
+                    <ImageView
                         android:id="@+id/searchcourse5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginLeft="20dp"
                         android:layout_gravity="center"
                         android:backgroundTint="@color/white"
                         android:drawableLeft="@drawable/map1_button"
-                        android:textColor="@color/black" />
+                        android:scaleType="fitXY" />
 
                     <TextView
                         android:id="@+id/search_course5"
@@ -194,16 +200,67 @@
                         android:layout_margin="20dp"
                         android:textStyle="bold"/>
                 </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/course_list6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/login_btn"
+                    android:layout_marginBottom="30dp"
+                    android:padding="15dp"
+                    android:layout_gravity="center">
+
+                    <ImageView
+                        android:id="@+id/searchcourse6"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_gravity="center"
+                        android:backgroundTint="@color/white"
+                        android:drawableLeft="@drawable/map1_button"
+                        android:scaleType="fitXY" />
+
+                    <TextView
+                        android:id="@+id/search_course6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="코스6"
+                        android:layout_margin="20dp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/course_list7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:background="@drawable/login_btn"
+                    android:layout_marginBottom="30dp"
+                    android:padding="15dp"
+                    android:layout_gravity="center">
+
+                    <ImageView
+                        android:id="@+id/searchcourse7"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_gravity="center"
+                        android:backgroundTint="@color/white"
+                        android:drawableLeft="@drawable/map1_button"
+                        android:scaleType="fitXY" />
+
+                    <TextView
+                        android:id="@+id/search_course7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="코스7"
+                        android:layout_margin="20dp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
             </LinearLayout>
         </ScrollView>
     </FrameLayout>
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?android:attr/windowBackground"
-        app:itemIconTint="@drawable/menu_selector_color"
-        app:itemTextColor="@drawable/menu_selector_color"
-        app:itemIconSize="40dp"
-        app:menu="@menu/nav_bottom" />
 </LinearLayout>
