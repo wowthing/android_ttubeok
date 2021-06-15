@@ -78,7 +78,7 @@ public class BottomFragment3 extends Fragment {
                         String getTime = dateFormat.format(date);
                         Calendar cal=Calendar.getInstance();
                         int dayOfWeek=cal.get(Calendar.DAY_OF_WEEK);
-                        if(dayOfWeek==1||getTime=="00:00:00"){
+                        if(dayOfWeek==1||getTime=="23:59:59"){
                             user_data.put("daySun",false);
                             user_data.put("dayMon",false);
                             user_data.put("dayTue",false);
