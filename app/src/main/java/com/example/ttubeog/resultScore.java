@@ -183,21 +183,7 @@ public class resultScore extends Activity {
                 user_data.put("daySat",true);
                 break;
         }
-        //일요일되면 주간 운동날짜 초기화
-        long now = System.currentTimeMillis();
-        Date date = new Date(now);
-        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
-        String getTime = dateFormat.format(date);
 
-        if(dayOfWeek==3&&getTime=="11:35:00"){
-            user_data.put("daySun",false);
-            user_data.put("dayMon",false);
-            user_data.put("dayTue",false);
-            user_data.put("dayWen",false);
-            user_data.put("dayThu",false);
-            user_data.put("dayFri",false);
-            user_data.put("daySat",false);
-        }
         db.collection("user").document(get_user)
                 .set(user_data, SetOptions.merge())
                 .addOnFailureListener(new OnFailureListener() {
