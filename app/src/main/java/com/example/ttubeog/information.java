@@ -65,7 +65,10 @@ public class information extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), measure.class);
+                Intent intent = new Intent(getApplicationContext(),measure.class);
+                //intent로 name넘겨주기
+                String c_name = course_name.getText().toString();
+                intent.putExtra("name",c_name);
                 startActivity(intent);
                 finish();
             }
@@ -125,12 +128,15 @@ public class information extends AppCompatActivity {
                         //Log.d(TAG, "content: " + content);
                         String name = document.getString("name");
 
+
+
                         course_name.setText(name);
                         //Map 띄우기
                         tag_1.setText("# " + (CharSequence) tag.get(0));
                         tag_2.setText("# " + (CharSequence) tag.get(1));
                         course_content.setText(content);
                         course_content.setMovementMethod(new ScrollingMovementMethod());
+
 
 
                     } else {
