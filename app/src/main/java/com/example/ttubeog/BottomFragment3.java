@@ -87,6 +87,7 @@ public class BottomFragment3 extends Fragment {
                             user_data.put("dayFri",false);
                             user_data.put("daySat",false);
                         }
+
                         db.collection("user").document(get_user)
                                 .set(user_data, SetOptions.merge())
                                 .addOnFailureListener(new OnFailureListener() {

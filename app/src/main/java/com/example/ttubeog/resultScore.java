@@ -227,6 +227,7 @@ public class resultScore extends Activity implements OnMapReadyCallback{
         user_data.put("step_count", past_step_count + step_count);
         user_data.put("course_length", past_course_length + course_length);
         user_data.put("course_count", course_count + 1);
+
         //현재요일 구해서 운동한 날 DB에 저장
         Calendar cal=Calendar.getInstance();
         int dayOfWeek=cal.get(Calendar.DAY_OF_WEEK);
