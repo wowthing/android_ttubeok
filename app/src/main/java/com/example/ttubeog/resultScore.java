@@ -29,6 +29,7 @@ import com.naver.maps.map.MapView;
 import com.naver.maps.map.NaverMap;
 import com.naver.maps.map.OnMapReadyCallback;
 import com.naver.maps.map.overlay.Marker;
+import com.naver.maps.map.util.FusedLocationSource;
 
 import java.lang.reflect.Array;
 import java.text.SimpleDateFormat;
@@ -55,8 +56,8 @@ public class resultScore extends Activity implements OnMapReadyCallback{
     float step_count; // 걸음 수 누적 기록
     float course_length;
     float past_course_length;
-    float loc_long;
-    float loc_la;
+    String loc_long;
+    String loc_la;
 
     //코스 측정화면에서 get_name으로 코스 이름 받아오기
     //코스 측정화면에서 get_user로 유저 이름 받아오기
@@ -106,8 +107,8 @@ public class resultScore extends Activity implements OnMapReadyCallback{
                     if (document.exists()) {
                         rating_count = document.getLong("rating_count").intValue();
                         rating_total = document.getLong("rating_total").intValue();
-                        loc_la = document.getLong("loc_la").floatValue();
-                        loc_long = document.getLong("loc_long").floatValue();
+                        loc_la = document.getString("loc_la");
+                        loc_long = document.getString("loc_long");
                         //Log.d(TAG, "가져온 rating_count: " + rating_count);
                         //Log.d(TAG, "가져온 rating_total: " + rating_total);
                         Log.d(TAG, "가져온 location: " + loc_la + loc_long);
@@ -142,10 +143,48 @@ public class resultScore extends Activity implements OnMapReadyCallback{
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+        mapView.onStart();
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mapView.onResume();
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mapView.onPause();
+    }
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        mapView.onSaveInstanceState(outState);
+    }
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mapView.onStop();
+    }
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mapView.onDestroy();
+    }
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        mapView.onLowMemory();
+    }
+
+    @Override
     public void onMapReady(@NonNull NaverMap naverMap) {
         this.naverMap = naverMap;
+        float loc_latitude = Float.parseFloat(loc_la);
+        float loc_longitude = Float.parseFloat(loc_long);
         CameraPosition cameraPosition = new CameraPosition(
-                new LatLng(loc_la, loc_long), 15
+        new LatLng(loc_latitude, loc_longitude), 16
         );
         naverMap.setCameraPosition(cameraPosition);
     }
