@@ -29,13 +29,6 @@
             android:textSize="20dp"
             android:text="뚜벅이" />
 
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/edit"
-            android:layout_gravity="center"
-            android:contentDescription="edit" />
-
     </GridLayout>
 
     <GridLayout
@@ -43,7 +36,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="fill_horizontal"
         android:layout_margin="20dp"
-        android:background="@drawable/login_btn">
+        android:background="@drawable/login_btn"
+        android:padding="10dp">
 
         <ImageView
             android:layout_width="80dp"
@@ -106,7 +100,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:background="@drawable/login_btn">
+        android:background="@drawable/login_btn"
+        android:padding="10dp">
 
         <ImageView
             android:layout_width="80dp"
@@ -304,7 +299,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
-        android:background="@drawable/login_btn">
+        android:background="@drawable/login_btn"
+        android:padding="10dp">
 
         <ImageView
             android:layout_width="80dp"

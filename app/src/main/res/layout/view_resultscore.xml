@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:background="@drawable/login_btn"
             android:layout_marginTop="60sp"
-            android:padding="5dp"
+            android:padding="10dp"
             android:layout_gravity="center"
             android:textAlignment="center"
             android:textColor="@color/black"

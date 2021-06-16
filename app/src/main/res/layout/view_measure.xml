@@ -19,7 +19,7 @@
             android:layout_gravity="center"
             android:layout_marginTop="60sp"
             android:background="@drawable/login_btn"
-            android:padding="5dp"
+            android:padding="10dp"
             android:text="코스 이름"
             android:textAlignment="center"
             android:textColor="@color/black"

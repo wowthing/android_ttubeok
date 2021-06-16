@@ -58,11 +58,14 @@ public class resultScore extends Activity implements OnMapReadyCallback{
     float past_course_length;
     String loc_long;
     String loc_la;
+    String name;
 
     //코스 측정화면에서 get_name으로 코스 이름 받아오기
     //코스 측정화면에서 get_user로 유저 이름 받아오기
     String get_user = "test_1";
-    String get_name = "course_2";
+    String get_name = "course_1";
+
+    TextView course_name;
 
     private MapView mapView;
     private static NaverMap naverMap;
@@ -96,6 +99,8 @@ public class resultScore extends Activity implements OnMapReadyCallback{
         ratingBar = findViewById(R.id.ratingBar);
         ratingBar.setOnRatingBarChangeListener(new Listener());
 
+        course_name = findViewById(R.id.course_name); //임의 추가!
+
         //DB에서 별점 값 불러오기
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         DocumentReference docRef = db.collection("course").document(get_name);
@@ -112,6 +117,9 @@ public class resultScore extends Activity implements OnMapReadyCallback{
                         //Log.d(TAG, "가져온 rating_count: " + rating_count);
                         //Log.d(TAG, "가져온 rating_total: " + rating_total);
                         Log.d(TAG, "가져온 location: " + loc_la + loc_long);
+
+                        name = document.getString("name");
+                        course_name.setText(name);
                     } else {
                         Log.d(TAG, "No such document");
                     }

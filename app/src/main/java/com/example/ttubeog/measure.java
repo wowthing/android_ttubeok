@@ -38,15 +38,16 @@ public class measure extends AppCompatActivity implements SensorEventListener {
     String TAG = "measure_log";
 
     //이전 화면에서 코스 이름, 유저 이름 가져오는 것 필요
-    String get_name = "test1";
+    String get_name = "course_1";
+
     private Button mStartBtn, mStopBtn, mPauseBtn;
     private TextView mTimeTextView;
     private Thread timeThread = null;
     private Boolean isRunning = true;
 
-    //infromation에서 넘어온 course_name 받아서 코스 이름으로 저장
+    /*//infromation에서 넘어온 course_name 받아서 코스 이름으로 저장
     Intent secondIntent = getIntent();
-    String c_name=secondIntent.getStringExtra("name");
+    String c_name=secondIntent.getStringExtra("name");*/
     TextView course_name;
 
     SensorManager sensorManager;
@@ -64,9 +65,9 @@ public class measure extends AppCompatActivity implements SensorEventListener {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_measure);
+
         //코스 이름
         course_name = (TextView) findViewById(R.id.course_name);
-        course_name.setText(c_name);
 
         //DB에서 코스 거리 불러오기
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -78,6 +79,8 @@ public class measure extends AppCompatActivity implements SensorEventListener {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
                         course_length = document.getLong("length");
+                        String name = document.getString("name");
+                        course_name.setText(name);
                     } else {
                         Log.d(TAG, "No such document");
                     }
@@ -88,7 +91,7 @@ public class measure extends AppCompatActivity implements SensorEventListener {
         });
 
         if (Build.VERSION.SDK_INT >= 21) {
-            getWindow().setStatusBarColor(Color.parseColor("#4ea1d3"));
+            getWindow().setStatusBarColor(Color.parseColor("#698474"));
         }
 
         // 활동 퍼미션 체크
