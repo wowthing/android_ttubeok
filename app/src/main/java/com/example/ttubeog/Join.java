@@ -3,6 +3,7 @@ package com.example.ttubeog;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.util.Log;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -100,6 +102,15 @@ public class Join extends AppCompatActivity {
             }
         });
 
+        Button join = (Button) findViewById(R.id.btn_join);
+        join.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Join.this, AppStart.class);
+                Toast.makeText(Join.this, "회원가입이 완료되었습니다.", Toast.LENGTH_LONG).show();
+                startActivity(intent);
+            }
+        });
 
     }
 

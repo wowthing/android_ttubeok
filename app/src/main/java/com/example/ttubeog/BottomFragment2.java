@@ -1,5 +1,6 @@
 package com.example.ttubeog;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -51,6 +52,7 @@ public class BottomFragment2 extends Fragment {
     String recommendation_1;
     String recommendation_1_name;
     String recommendation_2;
+    String recommendation_2_name;
 
     @Nullable
     @Override
@@ -132,7 +134,7 @@ public class BottomFragment2 extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), information.class);
                 String get_title = recommendation_1;
-                course_1.setText(recommendation_1_name);
+//                course_1.setText(recommendation_1_name);
                 intent.putExtra("get_title", get_title);
                 startActivity(intent);
             }
@@ -180,6 +182,15 @@ public class BottomFragment2 extends Fragment {
                     if (document.exists()) {
                         recommendation_1 = (String) document.get("rec_1");
                         recommendation_1_name = (String) document.get("name_1");
+                        recommendation_2 = (String) document.get("rec_2");
+                        recommendation_2_name = (String) document.get("name_2");
+
+                        Button course_1 = (Button)view.findViewById(R.id.rec_course1);
+                        course_1.setText(recommendation_1_name);
+
+                        Button course_2 = (Button)view.findViewById(R.id.rec_course2);
+                        course_2.setText(recommendation_2_name);
+
                     } else {
                         Log.d(TAG, "No such document");
                     }

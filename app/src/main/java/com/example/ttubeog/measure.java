@@ -20,6 +20,7 @@ import android.os.Message;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
+import androidx.annotation.UiThread;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
@@ -32,8 +33,19 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.naver.maps.geometry.LatLng;
+import com.naver.maps.map.CameraPosition;
+import com.naver.maps.map.LocationSource;
+import com.naver.maps.map.LocationTrackingMode;
+import com.naver.maps.map.MapView;
+import com.naver.maps.map.NaverMap;
+import com.naver.maps.map.OnMapReadyCallback;
+import com.naver.maps.map.UiSettings;
+import com.naver.maps.map.util.FusedLocationSource;
 
-public class measure extends AppCompatActivity implements SensorEventListener {
+public class measure extends AppCompatActivity implements SensorEventListener, OnMapReadyCallback {
+    /*private static final int LOCATION_PERMISSION_REQUEST_CODE = 1000;
+    private FusedLocationSource locationSource;*/
 
     String TAG = "measure_log";
 
@@ -53,18 +65,30 @@ public class measure extends AppCompatActivity implements SensorEventListener {
     SensorManager sensorManager;
     Sensor stepCountSensor;
     // 현재 걸음 수
-    int currentSteps = 0;
+    int currentSteps;
 
     float course_length;
+    String loc_long;
+    String loc_la;
 
     @SuppressLint("DefaultLocale") String result;
     float time;
+
+    //지도 추가
+    private MapView mapView;
+    private static NaverMap naverMap;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_measure);
+
+
+        mapView = (MapView) findViewById(R.id.map_view);
+        mapView.onCreate(savedInstanceState);
+        mapView.getMapAsync(this);
+//        locationSource = new FusedLocationSource(this, LOCATION_PERMISSION_REQUEST_CODE);
 
         //코스 이름
         course_name = (TextView) findViewById(R.id.course_name);
@@ -79,6 +103,11 @@ public class measure extends AppCompatActivity implements SensorEventListener {
                     DocumentSnapshot document = task.getResult();
                     if (document.exists()) {
                         course_length = document.getLong("length");
+                        loc_la = document.getString("loc_la");
+                        loc_long = document.getString("loc_long");
+                        //Log.d(TAG, "가져온 rating_count: " + rating_count);
+                        //Log.d(TAG, "가져온 rating_total: " + rating_total);
+                        Log.d(TAG, "가져온 location: " + loc_la + loc_long);
                         String name = document.getString("name");
                         course_name.setText(name);
                     } else {
@@ -160,6 +189,67 @@ public class measure extends AppCompatActivity implements SensorEventListener {
 
         });
     }
+
+    //지도 추가
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mapView.onStart();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mapView.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        mapView.onPause();
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        mapView.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        mapView.onStop();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mapView.onDestroy();
+    }
+
+    @Override
+    public void onLowMemory() {
+        super.onLowMemory();
+        mapView.onLowMemory();
+    }
+
+    @Override
+    public void onMapReady(@NonNull NaverMap naverMap) {
+        measure.naverMap = naverMap;
+//        naverMap.setLocationSource(locationSource);
+//        naverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
+//
+//        UiSettings uiSettings = naverMap.getUiSettings();
+//        uiSettings.setLocationButtonEnabled(true); //현 위치
+
+        float loc_latitude = Float.parseFloat(loc_la);
+        float loc_longitude = Float.parseFloat(loc_long);
+        CameraPosition cameraPosition = new CameraPosition(
+                new LatLng(loc_latitude, loc_longitude), 16
+        );
+        naverMap.setCameraPosition(cameraPosition);
+    }
+
     @SuppressLint("HandlerLeak")
     Handler handler = new Handler() {
         @Override
