@@ -41,6 +41,10 @@ public class Join extends AppCompatActivity {
     String length;
     String place;
 
+    int zero = 0;
+    boolean false_ = false;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,6 +132,18 @@ public class Join extends AppCompatActivity {
                                     join_data.put("time", time);
                                     join_data.put("length", length);
                                     join_data.put("place", place);
+                                    join_data.put("course_count", zero);
+                                    join_data.put("course_length", zero);
+                                    join_data.put("step_count", zero);
+                                    join_data.put("time_count", zero);
+                                    join_data.put("dayMon", false_);
+                                    join_data.put("dayTue", false_);
+                                    join_data.put("dayWen", false_);
+                                    join_data.put("dayThu", false_);
+                                    join_data.put("dayFri", false_);
+                                    join_data.put("daySat", false_);
+                                    join_data.put("daySun", false_);
+
 
                                     db.collection("user").document(id)
                                             .set(join_data)
