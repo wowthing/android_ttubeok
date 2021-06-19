@@ -143,53 +143,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/join_pw_check" />
 
             <TextView
-                android:id="@+id/disabled_text"
-                android:layout_width="wrap_content"
-                android:layout_height="30dp"
-                android:layout_marginLeft="23dp"
-                android:layout_marginRight="23dp"
-                android:layout_marginTop="40dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/join_name"
-                android:gravity="center"
-                android:text=""
-                android:textSize="16sp"
-                />
-
-            <RadioGroup
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toEndOf="@+id/animal_text"
-                app:layout_constraintTop_toBottomOf="@+id/join_name"
-                android:id="@+id/disabled_group"
-                android:orientation="horizontal">
-
-
-                <RadioButton
-                    android:id="@+id/disabled_yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="40dp"
-                    android:layout_marginLeft="23dp"
-                    android:gravity="center"
-                    android:text="유"
-                    />
-
-                <RadioButton
-                    android:id="@+id/disabled_no"
-                    android:layout_width="wrap_content"
-                    android:layout_height="30dp"
-                    android:layout_marginTop="40dp"
-                    android:layout_marginLeft="50dp"
-                    app:layout_constraintStart_toEndOf="@+id/disabled_yes"
-                    app:layout_constraintTop_toBottomOf="@+id/join_name"
-                    android:gravity="center"
-                    android:text="무"
-                    />
-
-            </RadioGroup>
-
-            <TextView
                 android:id="@+id/purpose_text"
                 android:layout_width="wrap_content"
                 android:layout_height="30dp"
@@ -197,7 +150,7 @@
                 android:layout_marginRight="23dp"
                 android:layout_marginTop="40dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/disabled_text"
+                app:layout_constraintTop_toBottomOf="@+id/join_name"
                 android:gravity="center"
                 android:text="산책 목적"
                 android:textSize="16sp"
@@ -207,7 +160,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toEndOf="@+id/animal_text"
-                app:layout_constraintTop_toBottomOf="@+id/disabled_text"
+                app:layout_constraintTop_toBottomOf="@+id/join_name"
                 android:id="@+id/purpose_group"
                 android:orientation="horizontal">
 
@@ -274,9 +227,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:layout_marginTop="40dp"
-                    android:layout_marginLeft="50dp"
-                    app:layout_constraintStart_toEndOf="@+id/animal_yes"
-                    app:layout_constraintTop_toBottomOf="@+id/purpose_text"
+                    android:layout_marginLeft="60dp"
+                    app:layout_constraintStart_toEndOf="@+id/purpose_exercise"
+                    app:layout_constraintTop_toBottomOf="@+id/purpose_walk"
                     android:gravity="center"
                     android:text="무"
                     />
@@ -322,7 +275,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:layout_marginTop="40dp"
-                    android:layout_marginLeft="50dp"
+                    android:layout_marginLeft="60dp"
                     app:layout_constraintStart_toEndOf="@+id/animal_yes"
                     app:layout_constraintTop_toBottomOf="@+id/animal_text"
                     android:gravity="center"
@@ -370,7 +323,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:layout_marginTop="40dp"
-                    android:layout_marginLeft="50dp"
+                    android:layout_marginLeft="20dp"
                     app:layout_constraintStart_toEndOf="@+id/animal_yes"
                     app:layout_constraintTop_toBottomOf="@+id/time_text"
                     android:gravity="center"
@@ -418,7 +371,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
                     android:layout_marginTop="40dp"
-                    android:layout_marginLeft="50dp"
+                    android:layout_marginLeft="60dp"
                     app:layout_constraintStart_toEndOf="@+id/animal_yes"
                     app:layout_constraintTop_toBottomOf="@+id/length_text"
                     android:gravity="center"

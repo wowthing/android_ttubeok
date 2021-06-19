@@ -35,7 +35,6 @@ public class Join extends AppCompatActivity {
 
     String TAG = "Join_log";
 
-    String disabled;
     String purpose;
     String animal;
     String time;
@@ -50,15 +49,6 @@ public class Join extends AppCompatActivity {
 
         TextView txt_id_check = (TextView) findViewById(R.id.txt_id_check);
         txt_id_check.setVisibility(View.GONE);
-
-        RadioGroup disabled_group = (RadioGroup) findViewById(R.id.disabled_group);
-        disabled_group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                RadioButton select = (RadioButton)findViewById(checkedId);
-                disabled = (String) select.getText();
-            }
-        });
 
         RadioGroup purpose_group = (RadioGroup) findViewById(R.id.purpose_group);
         purpose_group.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -133,7 +123,6 @@ public class Join extends AppCompatActivity {
                                     join_data.put("id", id);
                                     join_data.put("pw", pw);
                                     join_data.put("name", name);
-                                    join_data.put("disabled", disabled);
                                     join_data.put("purpose", purpose);
                                     join_data.put("animal", animal);
                                     join_data.put("time", time);
