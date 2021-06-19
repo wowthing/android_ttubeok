@@ -393,7 +393,8 @@
                 app:layout_constraintHorizontal_bias="0.496"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/place_text"
-                android:onClick="btn_join"/>
+                android:onClick="btn_join"
+                tools:ignore="OnClick" />
 
             <TextView
                 android:id="@+id/blank"
