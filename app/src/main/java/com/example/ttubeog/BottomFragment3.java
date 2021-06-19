@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -30,20 +31,20 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 
 public class BottomFragment3 extends Fragment {
 
     String TAG = "BottomFragment3_log";
 
     //사용자 유저 정보 가져오는 것 필요
-    String get_name = "test_1";
+    private FirebaseAuth auth;
 
     String course_length;
     String step_count;
     String count;
     boolean today[]=new boolean[8];
     ImageView imagebtn[]=new ImageView[8];
-
 
     @Nullable
     @Override
@@ -55,9 +56,14 @@ public class BottomFragment3 extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        auth = FirebaseAuth.getInstance();
+        String user_id = Objects.requireNonNull(auth.getCurrentUser()).getEmail();
+
+        TextView username = (TextView)view.findViewById(R.id.username);
+
         //DB에서 값 불러오기
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference docRef = db.collection("user").document(get_name);
+        DocumentReference docRef = db.collection("user").document(user_id);
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -67,6 +73,8 @@ public class BottomFragment3 extends Fragment {
                         step_count = document.getLong("step_count").toString();
                         course_length = document.getLong("course_length").toString();
                         count = document.getLong("course_count").toString();
+                        String name = document.getString("name");
+                        username.setText(name);
 
                         FirebaseFirestore db = FirebaseFirestore.getInstance();
                         //일요일되면 주간 운동날짜 초기화

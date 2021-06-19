@@ -18,6 +18,8 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -39,6 +41,7 @@ public class Join extends AppCompatActivity {
     String time;
     String length;
     String place;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,13 +105,60 @@ public class Join extends AppCompatActivity {
             }
         });
 
-        Button join = (Button) findViewById(R.id.btn_join);
-        join.setOnClickListener(new View.OnClickListener() {
+        EditText join_id = (EditText) findViewById(R.id.join_id);
+        Button btn_id_check = (Button) findViewById(R.id.btn_id_check);
+        EditText join_pw = (EditText) findViewById(R.id.join_pw);
+        EditText join_pw_check = (EditText) findViewById(R.id.join_pw_check);
+        TextView pw_check_msg = (TextView) findViewById(R.id.pw_check_msg);
+        EditText join_name = (EditText) findViewById(R.id.join_name);
+        Button btn_join = (Button) findViewById(R.id.btn_join);
+
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        btn_join.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Join.this, AppStart.class);
-                Toast.makeText(Join.this, "회원가입이 완료되었습니다.", Toast.LENGTH_LONG).show();
-                startActivity(intent);
+                String id = join_id.getText().toString().trim();
+                String pw = join_pw.getText().toString().trim();
+                String name = join_name.getText().toString().trim();
+
+                firebaseAuth.createUserWithEmailAndPassword(id, pw)
+                        .addOnCompleteListener(Join.this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+
+                                    FirebaseFirestore db = FirebaseFirestore.getInstance();
+
+                                    Map<String, Object> join_data = new HashMap<>();
+                                    join_data.put("id", id);
+                                    join_data.put("pw", pw);
+                                    join_data.put("name", name);
+                                    join_data.put("disabled", disabled);
+                                    join_data.put("purpose", purpose);
+                                    join_data.put("animal", animal);
+                                    join_data.put("time", time);
+                                    join_data.put("length", length);
+                                    join_data.put("place", place);
+
+                                    db.collection("user").document(id)
+                                            .set(join_data)
+                                            .addOnFailureListener(new OnFailureListener() {
+                                                @Override
+                                                public void onFailure(@NonNull Exception e) {
+                                                    Log.w(TAG, "Error adding document", e);
+                                                }
+                                            });
+
+                                    Intent intent = new Intent(Join.this, AppStart.class);
+                                    Toast.makeText(Join.this, "회원가입이 완료되었습니다.", Toast.LENGTH_LONG).show();
+                                    startActivity(intent);
+                                    finish();
+                                } else {
+                                    Toast.makeText(Join.this, "오류가 발생했습니다. 다시 시도해주세요.", Toast.LENGTH_LONG).show();
+                                    return;
+                                }
+                            }
+                        });
             }
         });
 
@@ -151,7 +201,7 @@ public class Join extends AppCompatActivity {
 
     }
 
-    public void btn_join(View v) {
+    /*public void btn_join(View v) {
         EditText join_id = (EditText) findViewById(R.id.join_id);
         Button btn_id_check = (Button) findViewById(R.id.btn_id_check);
         TextView txt_id_check = (TextView) findViewById(R.id.txt_id_check);
@@ -184,5 +234,5 @@ public class Join extends AppCompatActivity {
                         Log.w(TAG, "Error adding document", e);
                     }
                 });
-    }
+    }*/
 }

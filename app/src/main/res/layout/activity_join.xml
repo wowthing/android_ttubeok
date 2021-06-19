@@ -165,7 +165,7 @@
                 android:orientation="horizontal">
 
 
-                <!--<RadioButton
+                <RadioButton
                     android:id="@+id/disabled_yes"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
@@ -173,9 +173,9 @@
                     android:layout_marginLeft="23dp"
                     android:gravity="center"
                     android:text="유"
-                    />-->
+                    />
 
-                <!--<RadioButton
+                <RadioButton
                     android:id="@+id/disabled_no"
                     android:layout_width="wrap_content"
                     android:layout_height="30dp"
@@ -185,7 +185,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/join_name"
                     android:gravity="center"
                     android:text="무"
-                    />-->
+                    />
 
             </RadioGroup>
 
