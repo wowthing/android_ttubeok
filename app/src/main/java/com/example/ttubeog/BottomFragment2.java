@@ -167,14 +167,46 @@ public class BottomFragment2 extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
+        //userID 불러와서 넣기
+        DocumentReference docRef = db.collection("user").document("ttubeok@test.com");
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        animal = (String) document.get("animal");
+                        time = (String) document.get("time");
+                        length = (String) document.get("length");
+                        place = (String) document.get("place");
+                        purpose = (String) document.get("purpose");
+
+                        int_animal = Integer.parseInt(animal);
+                        int_time = Integer.parseInt(time);
+                        int_length = Integer.parseInt(length);
+                        int_place = Integer.parseInt(place);
+                        int_purpose = Integer.parseInt(purpose);
+
+                        Log.d(TAG, "선호도 조사 결과 받아오기 (1)");
+
+                    } else {
+                        Log.d(TAG, "선호도 조사 결과 불러오기 실패");
+                    }
+                } else {
+                    Log.d(TAG, "get failed with ", task.getException());
+                }
+            }
+        });
+
         try {
-            Thread.sleep(500);
+            Thread.sleep(2500);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
-        DocumentReference docRef = db.collection("user_base").document(recommendations[0]);
-        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        DocumentReference docRef2 = db.collection("user_base").document(recommendations[0]);
+        Log.d(TAG, "추천 코스 불러오기 (3)");
+        docRef2.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if (task.isSuccessful()) {
@@ -192,80 +224,23 @@ public class BottomFragment2 extends Fragment {
                         course_2.setText(recommendation_2_name);
 
                     } else {
-                        Log.d(TAG, "No such document");
+                        Log.d(TAG, "추천 코스 불러오기 실패");
                     }
                 } else {
                     Log.d(TAG, "get failed with ", task.getException());
                 }
             }
         });
-
-        db.collection("user")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        // 데이터를 가져오는 작업이 잘 동작했을 떄
-                        if (task.isSuccessful()) {
-                            for (QueryDocumentSnapshot document : task.getResult()) {
-                                //Log.d(TAG, document.getId() + " => " + document.getData());
-                                Map<String, Object> user = document.getData();
-                                id = user.get("id").toString();
-                                //"test_1" 대신 사용자 id 가져와서 넣기
-                                if(id.equals("test_1")) {
-                                    animal = user.get("animal").toString();
-                                    time = user.get("time").toString();
-                                    length = user.get("length").toString();
-                                    place = user.get("place").toString();
-                                    purpose = user.get("purpose").toString();
-
-                                    if(animal.equals("유")){
-                                        int_animal = 0;
-                                    }else {
-                                        int_animal = 1;
-                                    }
-
-                                    if(time.equals("낮")){
-                                        int_time = 0;
-                                    }else {
-                                        int_time = 1;
-                                    }
-
-                                    if(length.equals("짧은 코스")){
-                                        int_length = 0;
-                                    }else {
-                                        int_length = 1;
-                                    }
-
-                                    if(place.equals("숲")){
-                                        int_place = 0;
-                                    }else {
-                                        int_place = 1;
-                                    }
-
-                                    if(purpose.equals("운동")){
-                                        int_purpose = 0;
-                                    }else {
-                                        int_purpose = 1;
-                                    }
-                                }
-                            }
-                        }
-                        // 데이터를 가져오는 작업이 에러났을 때
-                        else {
-                            Log.w(TAG, "Error => ", task.getException());
-                        }
-                    }
-                });
     }
 
     private class GetUserDataThread extends Thread {
 
         public void run(){
             Client client = new Client();
-            get_recommendations = client.clientTest();
+            get_recommendations = client.clientTest(int_animal, int_time, int_length, int_place, int_purpose);
             connect_txt.setText(get_recommendations);
             recommendations = get_recommendations.split(",");
+            Log.d(TAG, "유사한 유저 받아오기 (2)");
             for(int i = 0; i< recommendations.length; i++){
                 Log.d(TAG, recommendations[i]);
             }

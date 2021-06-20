@@ -15,7 +15,7 @@ public class Client {
     Socket socket = null;            //Server와 통신하기 위한 Socket
     InetAddress ia = null;
 
-    public String clientTest(){
+    public String clientTest(int int_animal, int int_time, int int_length, int int_place, int int_purpose){
 
         try {
             ia = InetAddress.getByName("");    //서버로 접속
@@ -23,7 +23,8 @@ public class Client {
 
             ObjectOutputStream outStream = new ObjectOutputStream(socket.getOutputStream());
             outStream.flush();
-            outStream.writeObject("0,0,0,0,0");
+            String mixed = int_animal + "," + int_time + "," + int_length + "," + int_place + "," + int_purpose;
+            outStream.writeObject(mixed);
             outStream.flush();
             Log.d("ClientThread","서버로 보냄.");
 
