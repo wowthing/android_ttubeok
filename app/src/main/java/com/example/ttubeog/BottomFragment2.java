@@ -1,6 +1,5 @@
 package com.example.ttubeog;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
@@ -14,18 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.GeoPoint;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-
-import java.lang.reflect.Array;
-import java.util.Map;
 
 public class BottomFragment2 extends Fragment {
 
@@ -49,6 +36,7 @@ public class BottomFragment2 extends Fragment {
 
     String get_recommendations;
     String[] recommendations;
+    String get_preference;
     String recommendation_1;
     String recommendation_1_name;
     String recommendation_2;
@@ -128,7 +116,11 @@ public class BottomFragment2 extends Fragment {
             }
         });
 
+        GetUserDataThread getUserDataThread = new GetUserDataThread();
+        getUserDataThread.start();
+
         Button course_1 = (Button)rootview.findViewById(R.id.rec_course1);
+        course_1.setText(recommendation_1_name);
         course_1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -141,6 +133,7 @@ public class BottomFragment2 extends Fragment {
         });
 
         Button course_2 = (Button)rootview.findViewById(R.id.rec_course2);
+        course_2.setText(recommendation_2_name);
         course_2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -155,9 +148,6 @@ public class BottomFragment2 extends Fragment {
             }
         });
 
-        connect_txt = (TextView)rootview.findViewById(R.id.connect_txt);
-        GetUserDataThread getUserDataThread = new GetUserDataThread();
-        getUserDataThread.start();
 
         return rootview;
     }
@@ -165,85 +155,47 @@ public class BottomFragment2 extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        //userID 불러와서 넣기
-        DocumentReference docRef = db.collection("user").document("ttubeok@test.com");
-        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-                        animal = (String) document.get("animal");
-                        time = (String) document.get("time");
-                        length = (String) document.get("length");
-                        place = (String) document.get("place");
-                        purpose = (String) document.get("purpose");
-
-                        int_animal = Integer.parseInt(animal);
-                        int_time = Integer.parseInt(time);
-                        int_length = Integer.parseInt(length);
-                        int_place = Integer.parseInt(place);
-                        int_purpose = Integer.parseInt(purpose);
-
-                        Log.d(TAG, "선호도 조사 결과 받아오기 (1)");
-
-                    } else {
-                        Log.d(TAG, "선호도 조사 결과 불러오기 실패");
-                    }
-                } else {
-                    Log.d(TAG, "get failed with ", task.getException());
-                }
-            }
-        });
-
-        try {
-            Thread.sleep(2500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        DocumentReference docRef2 = db.collection("user_base").document(recommendations[0]);
-        Log.d(TAG, "추천 코스 불러오기 (3)");
-        docRef2.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-                        recommendation_1 = (String) document.get("rec_1");
-                        recommendation_1_name = (String) document.get("name_1");
-                        recommendation_2 = (String) document.get("rec_2");
-                        recommendation_2_name = (String) document.get("name_2");
-
-                        Button course_1 = (Button)view.findViewById(R.id.rec_course1);
-                        course_1.setText(recommendation_1_name);
-
-                        Button course_2 = (Button)view.findViewById(R.id.rec_course2);
-                        course_2.setText(recommendation_2_name);
-
-                    } else {
-                        Log.d(TAG, "추천 코스 불러오기 실패");
-                    }
-                } else {
-                    Log.d(TAG, "get failed with ", task.getException());
-                }
-            }
-        });
     }
 
     private class GetUserDataThread extends Thread {
 
         public void run(){
+            Preference preference = new Preference();
+            get_preference = preference.preferenceTest("ttubeok@test.com");
+            Log.d(TAG, "선호도 조사 결과 (1): " + get_preference);
+            animal = get_preference.substring(0,1);
+            time = get_preference.substring(1,2);
+            length = get_preference.substring(2,3);
+            place = get_preference.substring(3,4);
+            purpose = get_preference.substring(4);
+
+            int_animal = Integer.parseInt(animal);
+            int_time = Integer.parseInt(time);
+            int_length = Integer.parseInt(length);
+            int_place = Integer.parseInt(place);
+            int_purpose = Integer.parseInt(purpose);
+
+            try {
+                Thread.sleep(1300);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
             Client client = new Client();
             get_recommendations = client.clientTest(int_animal, int_time, int_length, int_place, int_purpose);
-            connect_txt.setText(get_recommendations);
+            Log.d(TAG, "유사한 유저 받아오기 (2): " + get_recommendations);
             recommendations = get_recommendations.split(",");
             Log.d(TAG, "유사한 유저 받아오기 (2)");
-            for(int i = 0; i< recommendations.length; i++){
-                Log.d(TAG, recommendations[i]);
-            }
+
+            recommendation_1 = preference.recomTest(recommendations[0]);
+            recommendation_2 = preference.recom2Test(recommendations[0]);
+            Log.d(TAG, "rec_num: " + recommendation_1);
+            Log.d(TAG, "rec_num: " + recommendation_2);
+
+            recommendation_1_name = preference.recomName(recommendations[0]);
+            recommendation_2_name = preference.recom2Name(recommendations[0]);
+            Log.d(TAG, "rec_name: " + recommendation_1_name);
+            Log.d(TAG, "rec_name: " + recommendation_2_name);
         }
     }
 }
