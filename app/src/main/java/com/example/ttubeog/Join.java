@@ -127,11 +127,11 @@ public class Join extends AppCompatActivity {
                                     join_data.put("id", id);
                                     join_data.put("pw", pw);
                                     join_data.put("name", name);
-                                    join_data.put("purpose", purpose);
-                                    join_data.put("animal", animal);
-                                    join_data.put("time", time);
-                                    join_data.put("length", length);
-                                    join_data.put("place", place);
+//                                    join_data.put("purpose", purpose);
+//                                    join_data.put("animal", animal);
+//                                    join_data.put("time", time);
+//                                    join_data.put("length", length);
+//                                    join_data.put("place", place);
                                     join_data.put("course_count", zero);
                                     join_data.put("course_length", zero);
                                     join_data.put("step_count", zero);
@@ -144,6 +144,45 @@ public class Join extends AppCompatActivity {
                                     join_data.put("daySat", false_);
                                     join_data.put("daySun", false_);
 
+                                    if(animal.equals("유")){
+                                        animal = "0";
+                                        join_data.put("animal", animal);
+                                    }else {
+                                        animal = "1";
+                                        join_data.put("animal", animal);
+                                    }
+
+                                    if(time.equals("낮")){
+                                        time = "0";
+                                        join_data.put("time", time);
+                                    }else {
+                                        time = "1";
+                                        join_data.put("time", time);
+                                    }
+
+                                    if(length.equals("짧은 코스")){
+                                        length = "0";
+                                        join_data.put("length", length);
+                                    }else {
+                                        length = "1";
+                                        join_data.put("length", length);
+                                    }
+
+                                    if(place.equals("숲")){
+                                        place = "0";
+                                        join_data.put("place", place);
+                                    }else {
+                                        place = "1";
+                                        join_data.put("place", place);
+                                    }
+
+                                    if(purpose.equals("운동")){
+                                        purpose = "1";
+                                        join_data.put("purpose", purpose);
+                                    }else {
+                                        purpose = "0";
+                                        join_data.put("purpose", purpose);
+                                    }
 
                                     db.collection("user").document(id)
                                             .set(join_data)

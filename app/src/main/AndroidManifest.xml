@@ -34,7 +34,6 @@
         <activity android:name=".MainActivity">
         </activity>
         <activity android:name=".searchresult"/>
-        <activity android:name=".search"/>
         <activity android:name=".information"/>
         <activity android:name=".resultScore"/>
         <activity android:name=".measure"/>

@@ -47,20 +47,17 @@ public class measure extends AppCompatActivity implements SensorEventListener, O
     /*private static final int LOCATION_PERMISSION_REQUEST_CODE = 1000;
     private FusedLocationSource locationSource;*/
 
+//    TextView course_name;
+
     String TAG = "measure_log";
 
-    //이전 화면에서 코스 이름, 유저 이름 가져오는 것 필요
-    String get_name = "course_1";
+    /*//이전 화면에서 코스 이름, 유저 이름 가져오는 것 필요
+    String get_name;*/
 
     private Button mStartBtn, mStopBtn, mPauseBtn;
     private TextView mTimeTextView;
     private Thread timeThread = null;
     private Boolean isRunning = true;
-
-    /*//infromation에서 넘어온 course_name 받아서 코스 이름으로 저장
-    Intent secondIntent = getIntent();
-    String c_name=secondIntent.getStringExtra("name");*/
-    TextView course_name;
 
     SensorManager sensorManager;
     Sensor stepCountSensor;
@@ -84,6 +81,7 @@ public class measure extends AppCompatActivity implements SensorEventListener, O
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_measure);
 
+        TextView course_name = (TextView) findViewById(R.id.course_name);
 
         mapView = (MapView) findViewById(R.id.map_view);
         mapView.onCreate(savedInstanceState);
@@ -91,11 +89,14 @@ public class measure extends AppCompatActivity implements SensorEventListener, O
 //        locationSource = new FusedLocationSource(this, LOCATION_PERMISSION_REQUEST_CODE);
 
         //코스 이름
-        course_name = (TextView) findViewById(R.id.course_name);
+        //infromation에서 넘어온 course_name 받아서 코스 이름으로 저장
+        Intent secondIntent = getIntent();
+        String c_name = secondIntent.getStringExtra("get_title");
+
 
         //DB에서 코스 거리 불러오기
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference docRef = db.collection("course").document(get_name);
+        DocumentReference docRef = db.collection("course").document(c_name);
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -168,10 +169,12 @@ public class measure extends AppCompatActivity implements SensorEventListener, O
                 //종료시 resultScore로 이동
                 Intent intent = new Intent(getApplicationContext(), resultScore.class);
                 float time_count = time;
+                String get_name = c_name;
                 //Log.d(TAG, "time_count: " + time_count);
                 intent.putExtra("time_count", time_count);
                 intent.putExtra("step_count", currentSteps);
                 intent.putExtra("course_length", course_length);
+                intent.putExtra("get_title", c_name);
                 startActivity(intent);
                 finish();
             }
@@ -191,6 +194,23 @@ public class measure extends AppCompatActivity implements SensorEventListener, O
     }
 
     //지도 추가
+    @Override
+    public void onMapReady(@NonNull NaverMap naverMap) {
+        measure.naverMap = naverMap;
+//        naverMap.setLocationSource(locationSource);
+//        naverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
+//
+//        UiSettings uiSettings = naverMap.getUiSettings();
+//        uiSettings.setLocationButtonEnabled(true); //현 위치
+
+        float loc_latitude = Float.parseFloat(loc_la);
+        float loc_longitude = Float.parseFloat(loc_long);
+        CameraPosition cameraPosition = new CameraPosition(
+                new LatLng(loc_latitude, loc_longitude), 16
+        );
+        naverMap.setCameraPosition(cameraPosition);
+    }
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -231,23 +251,6 @@ public class measure extends AppCompatActivity implements SensorEventListener, O
     public void onLowMemory() {
         super.onLowMemory();
         mapView.onLowMemory();
-    }
-
-    @Override
-    public void onMapReady(@NonNull NaverMap naverMap) {
-        measure.naverMap = naverMap;
-//        naverMap.setLocationSource(locationSource);
-//        naverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
-//
-//        UiSettings uiSettings = naverMap.getUiSettings();
-//        uiSettings.setLocationButtonEnabled(true); //현 위치
-
-        float loc_latitude = Float.parseFloat(loc_la);
-        float loc_longitude = Float.parseFloat(loc_long);
-        CameraPosition cameraPosition = new CameraPosition(
-                new LatLng(loc_latitude, loc_longitude), 16
-        );
-        naverMap.setCameraPosition(cameraPosition);
     }
 
     @SuppressLint("HandlerLeak")

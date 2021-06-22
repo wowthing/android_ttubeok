@@ -157,47 +157,73 @@
 
     </LinearLayout>
 
-    <ScrollView
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:orientation="horizontal">
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:id="@+id/rec_course1"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:background="@drawable/login_btn"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:layout_margin="15dp">
 
-
-            <Button
-                android:id="@+id/rec_course1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/login_btn"
-                android:layout_gravity="center"
-                android:drawableBottom="@drawable/size"
-                android:textColor="@color/black"
-                android:textSize="16dp"
-                android:layout_weight="1"
-                android:layout_margin="10dp"
-                android:padding="10dp"
-                android:text="코스1" />
-
-            <Button
-                android:id="@+id/rec_course2"
+            <TextView
+                android:id="@+id/recommendation_1_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@drawable/login_btn"
-                android:drawableBottom="@drawable/size1"
-                android:textColor="@color/black"
+                android:text="코스1"
+                android:textStyle="bold"
                 android:textSize="16dp"
-                android:layout_weight="1"
-                android:layout_margin="10dp"
-                android:padding="10dp"
-                android:text="코스2" />
+                android:padding="5dp"/>
 
+            <ImageView
+                android:id="@+id/recommendation_1_img"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:backgroundTint="@color/white"
+                android:drawableLeft="@drawable/map1_button"
+                android:scaleType="fitXY" />
         </LinearLayout>
-    </ScrollView>
+
+        <LinearLayout
+            android:id="@+id/rec_course2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/login_btn"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:layout_margin="15dp">
+
+            <TextView
+                android:id="@+id/recommendation_2_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="코스2"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:padding="5dp"/>
+
+            <ImageView
+                android:id="@+id/recommendation_2_img"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:layout_gravity="center"
+                android:layout_margin="10dp"
+                android:backgroundTint="@color/white"
+                android:drawableLeft="@drawable/map1_button"
+                android:scaleType="fitXY" />
+        </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>

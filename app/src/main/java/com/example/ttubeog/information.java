@@ -60,23 +60,22 @@ public class information extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_information);
 
-        btn=findViewById(R.id.choose_button);
+        //BottomFragment에서 코스 이름 가져오기
+        Intent secondIntent = getIntent();
+        String get_name = secondIntent.getStringExtra("get_title");
 
+        btn=findViewById(R.id.choose_button);
         btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(),measure.class);
                 //intent로 name넘겨주기
-                String c_name = course_name.getText().toString();
-                intent.putExtra("name",c_name);
+                String c_name = get_name;
+                intent.putExtra("get_title",c_name);
                 startActivity(intent);
                 finish();
             }
         });
-
-        //BottomFragment에서 코스 이름 가져오기
-        Intent secondIntent = getIntent();
-        String get_name = secondIntent.getStringExtra("get_title");
 
         //파이어베이스 스토리지
         FirebaseStorage storage = FirebaseStorage.getInstance();
@@ -91,7 +90,7 @@ public class information extends AppCompatActivity {
             img.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                 @Override
                 public void onSuccess(Uri uri) {
-                    //이미지 뷰에 사진 띄우기 (06-08 코스6까지 테스트)
+                    //이미지 뷰에 사진 띄우기
                     Glide.with(information.this).load(uri)
                             .apply(RequestOptions.bitmapTransform(new RoundedCorners(45)))
                             .into(imgview);
@@ -127,18 +126,12 @@ public class information extends AppCompatActivity {
                         content = document.getString("contents");
                         //Log.d(TAG, "content: " + content);
                         String name = document.getString("name");
-
-
-
                         course_name.setText(name);
                         //Map 띄우기
                         tag_1.setText("# " + (CharSequence) tag.get(0));
                         tag_2.setText("# " + (CharSequence) tag.get(1));
                         course_content.setText(content);
                         course_content.setMovementMethod(new ScrollingMovementMethod());
-
-
-
                     } else {
                         Log.d(TAG, "No such document");
                     }

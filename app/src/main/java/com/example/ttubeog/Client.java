@@ -18,7 +18,7 @@ public class Client {
     public String clientTest(int int_animal, int int_time, int int_length, int int_place, int int_purpose){
 
         try {
-            ia = InetAddress.getByName("192.168.123.104");    //서버로 접속
+            ia = InetAddress.getByName("192.168.35.237");    //서버로 접속
             socket = new Socket(ia,9999);
 
             ObjectOutputStream outStream = new ObjectOutputStream(socket.getOutputStream());

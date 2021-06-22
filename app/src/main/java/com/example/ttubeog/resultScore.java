@@ -16,6 +16,7 @@ import androidx.annotation.NonNull;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -40,6 +41,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 
 public class resultScore extends Activity implements OnMapReadyCallback{
@@ -66,8 +68,8 @@ public class resultScore extends Activity implements OnMapReadyCallback{
 
     //코스 측정화면에서 get_name으로 코스 이름 받아오기
     //코스 측정화면에서 get_user로 유저 이름 받아오기
-    String get_user = "test_1";
-    String get_name = "course_1";
+    private FirebaseAuth auth;
+    String get_title;
 
     TextView course_name;
 
@@ -91,6 +93,7 @@ public class resultScore extends Activity implements OnMapReadyCallback{
         time_count = secondIntent.getFloatExtra("time_count", time_count);
         step_count = secondIntent.getFloatExtra("step_count", step_count);
         course_length = secondIntent.getFloatExtra("course_length", course_length);
+        get_title = secondIntent.getStringExtra("get_title");
         Log.d(TAG, "받아온 time_count: " + time_count);
 
         TextView course_result = (TextView)findViewById(R.id.course_result);
@@ -108,7 +111,7 @@ public class resultScore extends Activity implements OnMapReadyCallback{
 
         //DB에서 별점 값 불러오기
         FirebaseFirestore db = FirebaseFirestore.getInstance();
-        DocumentReference docRef = db.collection("course").document(get_name);
+        DocumentReference docRef = db.collection("course").document(get_title);
         docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -134,7 +137,10 @@ public class resultScore extends Activity implements OnMapReadyCallback{
             }
         });
 
-        DocumentReference docRef2 = db.collection("user").document(get_user);
+        auth = FirebaseAuth.getInstance();
+        String user_id = Objects.requireNonNull(auth.getCurrentUser()).getEmail();
+
+        DocumentReference docRef2 = db.collection("user").document(user_id);
         docRef2.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
@@ -153,6 +159,23 @@ public class resultScore extends Activity implements OnMapReadyCallback{
                 }
             }
         });
+    }
+
+    @Override
+    public void onMapReady(@NonNull NaverMap naverMap) {
+        resultScore.naverMap = naverMap;
+       /* naverMap.setLocationSource(locationSource);
+        naverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
+
+        UiSettings uiSettings = naverMap.getUiSettings();
+        uiSettings.setLocationButtonEnabled(true); //현 위치*/
+
+        float loc_latitude = Float.parseFloat(loc_la);
+        float loc_longitude = Float.parseFloat(loc_long);
+        CameraPosition cameraPosition = new CameraPosition(
+                new LatLng(loc_latitude, loc_longitude), 16
+        );
+        naverMap.setCameraPosition(cameraPosition);
     }
 
     @Override
@@ -191,23 +214,6 @@ public class resultScore extends Activity implements OnMapReadyCallback{
         mapView.onLowMemory();
     }
 
-    @Override
-    public void onMapReady(@NonNull NaverMap naverMap) {
-        resultScore.naverMap = naverMap;
-       /* naverMap.setLocationSource(locationSource);
-        naverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
-
-        UiSettings uiSettings = naverMap.getUiSettings();
-        uiSettings.setLocationButtonEnabled(true); //현 위치*/
-
-        float loc_latitude = Float.parseFloat(loc_la);
-        float loc_longitude = Float.parseFloat(loc_long);
-        CameraPosition cameraPosition = new CameraPosition(
-        new LatLng(loc_latitude, loc_longitude), 16
-        );
-        naverMap.setCameraPosition(cameraPosition);
-    }
-
     class Listener implements RatingBar.OnRatingBarChangeListener{
         @Override
         public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
@@ -231,7 +237,7 @@ public class resultScore extends Activity implements OnMapReadyCallback{
         result_data.put("rating_count", rating_count);
         result_data.put("rating_total", rating_total);
         result_data.put("rating_avg", rating_avg);
-        db.collection("course").document(get_name)
+        db.collection("course").document(get_title)
                 .set(result_data, SetOptions.merge())
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
@@ -274,7 +280,10 @@ public class resultScore extends Activity implements OnMapReadyCallback{
                 break;
         }
 
-        db.collection("user").document(get_user)
+        auth = FirebaseAuth.getInstance();
+        String user_id = Objects.requireNonNull(auth.getCurrentUser()).getEmail();
+
+        db.collection("user").document(user_id)
                 .set(user_data, SetOptions.merge())
                 .addOnFailureListener(new OnFailureListener() {
                     @Override

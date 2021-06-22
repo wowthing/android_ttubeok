@@ -1,6 +1,8 @@
 package com.example.ttubeog;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -14,13 +16,32 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.RequestOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+
+import java.util.Objects;
 
 public class BottomFragment2 extends Fragment {
 
     String TAG = "BottomFragment2_log";
 
     String id;
+    private FirebaseAuth auth;
 
     String animal;
     String time;
@@ -116,6 +137,25 @@ public class BottomFragment2 extends Fragment {
             }
         });
 
+        auth = FirebaseAuth.getInstance();
+        String user_id = Objects.requireNonNull(auth.getCurrentUser()).getEmail();
+        TextView username = (TextView)rootview.findViewById(R.id.name);
+
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        DocumentReference docRef = db.collection("user").document(user_id);
+        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        String name = document.getString("name");
+                        username.setText(name);
+                    } else {
+                    }
+            } }
+        });
+
         GetUserDataThread getUserDataThread = new GetUserDataThread();
         getUserDataThread.start();
 
@@ -125,8 +165,11 @@ public class BottomFragment2 extends Fragment {
     private class GetUserDataThread extends Thread {
 
         public void run(){
+            auth = FirebaseAuth.getInstance();
+            String user_id = Objects.requireNonNull(auth.getCurrentUser()).getEmail();
+
             Preference preference = new Preference();
-            get_preference = preference.preferenceTest("ttubeok@test.com");
+            get_preference = preference.preferenceTest(user_id);
             Log.d(TAG, "선호도 조사 결과 (1): " + get_preference);
             animal = get_preference.substring(0,1);
             time = get_preference.substring(1,2);
@@ -167,11 +210,35 @@ public class BottomFragment2 extends Fragment {
         }
     }
 
+    @SuppressLint("HandlerLeak")
     final Handler handler = new Handler(){
         public void handleMessage(Message msg){
-            Button course_1 = (Button)getView().findViewById(R.id.rec_course1);
+            LinearLayout rec1 = (LinearLayout)getView().findViewById(R.id.rec_course1);
+            LinearLayout rec2 = (LinearLayout)getView().findViewById(R.id.rec_course2);
+            TextView course_1 = (TextView)getView().findViewById(R.id.recommendation_1_name);
+            TextView course_2 = (TextView)getView().findViewById(R.id.recommendation_2_name);
+            ImageView imgview1 = (ImageView)getView().findViewById(R.id.recommendation_1_img);
+            ImageView imgview2 = (ImageView)getView().findViewById(R.id.recommendation_2_img);
+
+            FirebaseStorage storage = FirebaseStorage.getInstance();
+            StorageReference storageRef = storage.getReference();
+
             course_1.setText(recommendation_1_name);
-            course_1.setOnClickListener(new View.OnClickListener() {
+            StorageReference img1 = storageRef.child("course/").child(recommendation_1+".jpg");
+            img1.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    Glide.with(BottomFragment2.this).load(uri)
+                            .apply(RequestOptions.bitmapTransform(new RoundedCorners(45)))
+                            .into(imgview1);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                }
+            });
+
+            rec1.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(getActivity(), information.class);
@@ -181,9 +248,22 @@ public class BottomFragment2 extends Fragment {
                 }
             });
 
-            Button course_2 = (Button)getView().findViewById(R.id.rec_course2);
             course_2.setText(recommendation_2_name);
-            course_2.setOnClickListener(new View.OnClickListener() {
+            StorageReference img2 = storageRef.child("course/").child(recommendation_2+".jpg");
+            img2.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    Glide.with(BottomFragment2.this).load(uri)
+                            .apply(RequestOptions.bitmapTransform(new RoundedCorners(45)))
+                            .into(imgview2);
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                }
+            });
+
+            rec2.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(getActivity(), information.class);
