@@ -7,6 +7,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,8 +33,6 @@ public class BottomFragment2 extends Fragment {
     int int_length;
     int int_place;
     int int_purpose;
-
-    TextView connect_txt;
 
     String get_recommendations;
     String[] recommendations;
@@ -119,42 +119,7 @@ public class BottomFragment2 extends Fragment {
         GetUserDataThread getUserDataThread = new GetUserDataThread();
         getUserDataThread.start();
 
-        Button course_1 = (Button)rootview.findViewById(R.id.rec_course1);
-        course_1.setText(recommendation_1_name);
-        course_1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), information.class);
-                String get_title = recommendation_1;
-//                course_1.setText(recommendation_1_name);
-                intent.putExtra("get_title", get_title);
-                startActivity(intent);
-            }
-        });
-
-        Button course_2 = (Button)rootview.findViewById(R.id.rec_course2);
-        course_2.setText(recommendation_2_name);
-        course_2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //임시로 회원가입 창 뜨게 함
-                //join.class 대신 information.class 넣기
-                Intent intent = new Intent(getActivity(),Join.class);
-                //information.java로 course 이름 전달
-                //test1 대신 course 이름 변수 입력
-                //String get_title = "test1";
-                //intent.putExtra("get_title", get_title);
-                startActivity(intent);
-            }
-        });
-
-
         return rootview;
-    }
-
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
     }
 
     private class GetUserDataThread extends Thread {
@@ -196,6 +161,37 @@ public class BottomFragment2 extends Fragment {
             recommendation_2_name = preference.recom2Name(recommendations[0]);
             Log.d(TAG, "rec_name: " + recommendation_1_name);
             Log.d(TAG, "rec_name: " + recommendation_2_name);
+
+            Message msg = handler.obtainMessage();
+            handler.sendMessage(msg);
         }
     }
+
+    final Handler handler = new Handler(){
+        public void handleMessage(Message msg){
+            Button course_1 = (Button)getView().findViewById(R.id.rec_course1);
+            course_1.setText(recommendation_1_name);
+            course_1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), information.class);
+                    String get_title = recommendation_1;
+                    intent.putExtra("get_title", get_title);
+                    startActivity(intent);
+                }
+            });
+
+            Button course_2 = (Button)getView().findViewById(R.id.rec_course2);
+            course_2.setText(recommendation_2_name);
+            course_2.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), information.class);
+                    String get_title = recommendation_2;
+                    intent.putExtra("get_title", get_title);
+                    startActivity(intent);
+                }
+            });
+        }
+    };
 }
