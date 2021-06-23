@@ -45,8 +45,8 @@ import java.util.Objects;
 
 
 public class resultScore extends Activity implements OnMapReadyCallback{
-//    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1000;
-//    private FusedLocationSource locationSource;
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1000;
+    private FusedLocationSource locationSource;
 
     String TAG = "resultScore_log";
 
@@ -66,11 +66,9 @@ public class resultScore extends Activity implements OnMapReadyCallback{
     String loc_la;
     String name;
 
-    //코스 측정화면에서 get_name으로 코스 이름 받아오기
-    //코스 측정화면에서 get_user로 유저 이름 받아오기
+    //유저 정보, 코스 이름
     private FirebaseAuth auth;
     String get_title;
-
     TextView course_name;
 
     private MapView mapView;
@@ -85,7 +83,7 @@ public class resultScore extends Activity implements OnMapReadyCallback{
         mapView = (MapView) findViewById(R.id.map_view);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
-//        locationSource = new FusedLocationSource(this, LOCATION_PERMISSION_REQUEST_CODE);
+        locationSource = new FusedLocationSource(this, LOCATION_PERMISSION_REQUEST_CODE);
 
         //BottomFragment에서 코스 이름 가져오기
         //measure.java에서 걸은 시간, 걸음 수 가져옴
@@ -102,12 +100,10 @@ public class resultScore extends Activity implements OnMapReadyCallback{
                         + "이동한 거리: " + course_length + "km";
         course_result.setText(set_text);
 
-        //코스 측정화면에서 그린 이동 기록 받아온 후 DB에 저장 https://dvlv.tistory.com/35
-
         ratingBar = findViewById(R.id.ratingBar);
         ratingBar.setOnRatingBarChangeListener(new Listener());
 
-        course_name = findViewById(R.id.course_name); //임의 추가!
+        course_name = findViewById(R.id.course_name);
 
         //DB에서 별점 값 불러오기
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -164,11 +160,10 @@ public class resultScore extends Activity implements OnMapReadyCallback{
     @Override
     public void onMapReady(@NonNull NaverMap naverMap) {
         resultScore.naverMap = naverMap;
-       /* naverMap.setLocationSource(locationSource);
-        naverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
+        naverMap.setLocationSource(locationSource);
 
         UiSettings uiSettings = naverMap.getUiSettings();
-        uiSettings.setLocationButtonEnabled(true); //현 위치*/
+        uiSettings.setLocationButtonEnabled(true); //현 위치
 
         float loc_latitude = Float.parseFloat(loc_la);
         float loc_longitude = Float.parseFloat(loc_long);

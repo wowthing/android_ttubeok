@@ -31,6 +31,5 @@ public class AppStart extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 }

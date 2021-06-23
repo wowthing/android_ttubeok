@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         if (mapFragment == null) {
             mapFragment = MapFragment.newInstance();
             fm.beginTransaction().add(R.id.map, mapFragment).commit();
-
             mapFragment.getMapAsync(this);
         }
         locationSource = new FusedLocationSource(this, LOCATION_PERMISSION_REQUEST_CODE);
@@ -50,7 +49,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 BottomNavigate(menuItem.getItemId());
-
                 return true;
             }
         });

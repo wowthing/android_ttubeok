@@ -121,8 +121,6 @@ public class information extends AppCompatActivity {
                         //Log.d(TAG, "DocumentSnapshot data: " + document.getData());
                         tag = (List<Map<String, String>>) document.get("tag");
                         //Log.d(TAG, "tag: " + tag.get(0));
-                        time = document.getLong("time").intValue();
-                        //Log.d(TAG, "time: " + time);
                         content = document.getString("contents");
                         //Log.d(TAG, "content: " + content);
                         String name = document.getString("name");

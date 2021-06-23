@@ -113,7 +113,6 @@ public class BottomFragment3 extends Fragment {
                         today[6]=document.getBoolean("daySat");
                         today[7]=document.getBoolean("daySun");
 
-
                         //걸음 수 및 이동 거리
                         TextView step_count_view = (TextView)view.findViewById(R.id.step_count_view);
                         step_count_view.setText(step_count);
@@ -133,12 +132,10 @@ public class BottomFragment3 extends Fragment {
                         imagebtn[6] = (ImageView)view.findViewById(R.id.day_6);
                         imagebtn[7] = (ImageView)view.findViewById(R.id.day_7);
 
-
                         for(int i=1;i<8;i++){
                             if(today[i])
                                 imagebtn[i].setVisibility(View.VISIBLE);
                         }
-
                         Log.d(TAG, "No such document");
                     }
                 } else {

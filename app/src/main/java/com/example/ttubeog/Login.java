@@ -34,7 +34,6 @@ public class Login extends AppCompatActivity {
         editTextEmail = (EditText) findViewById(R.id.id);
         editTextPassword = (EditText) findViewById(R.id.pw);
 
-
         buttonLogin = (Button) findViewById(R.id.btn_login);
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,6 +58,7 @@ public class Login extends AppCompatActivity {
             }
         };
     }
+
     public void loginUser(String email, String password) {
         firebaseAuth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {

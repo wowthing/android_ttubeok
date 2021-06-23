@@ -36,8 +36,8 @@ public class Client {
             int readByteCount = instream.read(byteArr);
             input = new String(byteArr, 0, readByteCount, "UTF-8"); // instream.readObject(); 서버로 부터 받은 데이터 , 핸들러 접근 가능하게 final 상수처럼 취급
             Log.d("ClientThread", "받은 데이터 : " + input);
-
             res = input;
+
         }catch(IOException e) {
             e.printStackTrace();
             res = "fail";

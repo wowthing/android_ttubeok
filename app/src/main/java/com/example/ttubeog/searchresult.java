@@ -46,6 +46,7 @@ public class searchresult extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.view_search_result);
 
+        //코스 이름
         TextView tag = (TextView) findViewById(R.id.search_tag);
         TextView search_course1 = (TextView) findViewById(R.id.search_course1);
         TextView search_course2 = (TextView) findViewById(R.id.search_course2);
@@ -55,6 +56,7 @@ public class searchresult extends AppCompatActivity {
         TextView search_course6 = (TextView) findViewById(R.id.search_course6);
         TextView search_course7 = (TextView) findViewById(R.id.search_course7);
 
+        //레이아웃
         LinearLayout coursev1 = (LinearLayout)findViewById(R.id.course_list1);
         LinearLayout coursev2 = (LinearLayout)findViewById(R.id.course_list2);
         LinearLayout coursev3 = (LinearLayout)findViewById(R.id.course_list3);
@@ -63,6 +65,7 @@ public class searchresult extends AppCompatActivity {
         LinearLayout coursev6 = (LinearLayout)findViewById(R.id.course_list6);
         LinearLayout coursev7 = (LinearLayout)findViewById(R.id.course_list7);
 
+        //데이터를 담을 리스트
         List course_title = new ArrayList();
         List course_num = new ArrayList();
 
@@ -75,6 +78,7 @@ public class searchresult extends AppCompatActivity {
         StorageReference storageRef = storage.getReference();
         StorageReference pathRef = storageRef.child("course");
 
+        //코스 이미지
         ImageView imgview1 = (ImageView) findViewById(R.id.searchcourse1);
         ImageView imgview2 = (ImageView) findViewById(R.id.searchcourse2);
         ImageView imgview3 = (ImageView) findViewById(R.id.searchcourse3);
@@ -95,8 +99,7 @@ public class searchresult extends AppCompatActivity {
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()) {
 
-                            //검색 태그 설정
-                            tag.setText(searchtag);
+                            tag.setText(searchtag); //검색 태그 설정
 
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d(TAG, document.getId() + " => " + document.getData());
@@ -107,7 +110,7 @@ public class searchresult extends AppCompatActivity {
                             int i;
                             int length = course_title.size();
                             int size = 8 - length;
-                            for (i=0; i<size; i++) { course_title.add("null"); }
+                            for (i=0; i<size; i++) { course_title.add("null"); } //검색 결과 없을 시 null
 
                             if (course_title.get(0).equals("null")) {
                                 coursev1.setVisibility(View.GONE);
@@ -143,7 +146,6 @@ public class searchresult extends AppCompatActivity {
                             } else {
                                 search_course2.setText((CharSequence) course_title.get(1));
                                 String name2 = (String) course_num.get(1);
-                                //코스 사진 불러오기
                                 StorageReference img = storageRef.child("course/").child(course_num.get(1)+".jpg");
                                 img.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                     @Override
@@ -172,7 +174,6 @@ public class searchresult extends AppCompatActivity {
                             } else {
                                 search_course3.setText((CharSequence) course_title.get(2));
                                 String name3 = (String) course_num.get(2);
-                                //코스 사진 불러오기
                                 StorageReference img = storageRef.child("course/").child(course_num.get(2)+".jpg");
                                 img.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                     @Override
@@ -201,7 +202,6 @@ public class searchresult extends AppCompatActivity {
                             } else {
                                 search_course4.setText((CharSequence) course_title.get(3));
                                 String name4 = (String) course_num.get(3);
-                                //코스 사진 불러오기
                                 StorageReference img = storageRef.child("course/").child(course_num.get(3)+".jpg");
                                 img.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                     @Override
@@ -230,7 +230,6 @@ public class searchresult extends AppCompatActivity {
                             } else {
                                 search_course5.setText((CharSequence) course_title.get(4));
                                 String name5 = (String) course_num.get(4);
-                                //코스 사진 불러오기
                                 StorageReference img = storageRef.child("course/").child(course_num.get(4)+".jpg");
                                 img.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                     @Override
@@ -259,7 +258,6 @@ public class searchresult extends AppCompatActivity {
                             } else {
                                 search_course6.setText((CharSequence) course_title.get(5));
                                 String name6 = (String) course_num.get(5);
-                                //코스 사진 불러오기
                                 StorageReference img = storageRef.child("course/").child(course_num.get(5)+".jpg");
                                 img.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                     @Override
@@ -288,7 +286,6 @@ public class searchresult extends AppCompatActivity {
                             } else {
                                 search_course7.setText((CharSequence) course_title.get(6));
                                 String name7 = (String) course_num.get(6);
-                                //코스 사진 불러오기
                                 StorageReference img = storageRef.child("course/").child(course_num.get(6)+".jpg");
                                 img.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                     @Override

@@ -45,7 +45,6 @@ public class Join extends AppCompatActivity {
     boolean false_ = false;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -120,18 +119,12 @@ public class Join extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-
                                     FirebaseFirestore db = FirebaseFirestore.getInstance();
 
                                     Map<String, Object> join_data = new HashMap<>();
                                     join_data.put("id", id);
                                     join_data.put("pw", pw);
                                     join_data.put("name", name);
-//                                    join_data.put("purpose", purpose);
-//                                    join_data.put("animal", animal);
-//                                    join_data.put("time", time);
-//                                    join_data.put("length", length);
-//                                    join_data.put("place", place);
                                     join_data.put("course_count", zero);
                                     join_data.put("course_length", zero);
                                     join_data.put("step_count", zero);
@@ -242,41 +235,5 @@ public class Join extends AppCompatActivity {
                 }
             }
         });
-
     }
-
-    /*public void btn_join(View v) {
-        EditText join_id = (EditText) findViewById(R.id.join_id);
-        Button btn_id_check = (Button) findViewById(R.id.btn_id_check);
-        TextView txt_id_check = (TextView) findViewById(R.id.txt_id_check);
-        EditText join_pw = (EditText) findViewById(R.id.join_pw);
-        EditText join_pw_check = (EditText) findViewById(R.id.join_pw_check);
-        TextView pw_check_msg = (TextView) findViewById(R.id.pw_check_msg);
-        EditText join_name = (EditText) findViewById(R.id.join_name);
-        Button btn_join = (Button) findViewById(R.id.btn_join);
-
-        String id = join_id.getText().toString();
-        String pw = join_pw.getText().toString();
-        String name = join_name.getText().toString();
-        FirebaseFirestore db = FirebaseFirestore.getInstance();
-
-        Map<String, Object> join_data = new HashMap<>();
-        join_data.put("id", id);
-        join_data.put("pw", pw);
-        join_data.put("name", name);
-        join_data.put("disabled", disabled);
-        join_data.put("purpose", purpose);
-        join_data.put("animal", animal);
-        join_data.put("time", time);
-        join_data.put("length", length);
-        join_data.put("place", place);
-        db.collection("user").document(id)
-                .set(join_data)
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error adding document", e);
-                    }
-                });
-    }*/
 }

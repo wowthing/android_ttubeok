@@ -137,6 +137,7 @@ public class BottomFragment2 extends Fragment {
             }
         });
 
+        //사용자 정보
         auth = FirebaseAuth.getInstance();
         String user_id = Objects.requireNonNull(auth.getCurrentUser()).getEmail();
         TextView username = (TextView)rootview.findViewById(R.id.name);
@@ -223,6 +224,7 @@ public class BottomFragment2 extends Fragment {
             FirebaseStorage storage = FirebaseStorage.getInstance();
             StorageReference storageRef = storage.getReference();
 
+            //추천 코스 1
             course_1.setText(recommendation_1_name);
             StorageReference img1 = storageRef.child("course/").child(recommendation_1+".jpg");
             img1.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -248,6 +250,7 @@ public class BottomFragment2 extends Fragment {
                 }
             });
 
+            //추천 코스 2
             course_2.setText(recommendation_2_name);
             StorageReference img2 = storageRef.child("course/").child(recommendation_2+".jpg");
             img2.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {

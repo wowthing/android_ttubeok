@@ -44,15 +44,10 @@ import com.naver.maps.map.UiSettings;
 import com.naver.maps.map.util.FusedLocationSource;
 
 public class measure extends AppCompatActivity implements SensorEventListener, OnMapReadyCallback {
-    /*private static final int LOCATION_PERMISSION_REQUEST_CODE = 1000;
-    private FusedLocationSource locationSource;*/
-
-//    TextView course_name;
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1000;
+    private FusedLocationSource locationSource;
 
     String TAG = "measure_log";
-
-    /*//이전 화면에서 코스 이름, 유저 이름 가져오는 것 필요
-    String get_name;*/
 
     private Button mStartBtn, mStopBtn, mPauseBtn;
     private TextView mTimeTextView;
@@ -61,8 +56,7 @@ public class measure extends AppCompatActivity implements SensorEventListener, O
 
     SensorManager sensorManager;
     Sensor stepCountSensor;
-    // 현재 걸음 수
-    int currentSteps;
+    int currentSteps; // 현재 걸음 수
 
     float course_length;
     String loc_long;
@@ -86,13 +80,12 @@ public class measure extends AppCompatActivity implements SensorEventListener, O
         mapView = (MapView) findViewById(R.id.map_view);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
-//        locationSource = new FusedLocationSource(this, LOCATION_PERMISSION_REQUEST_CODE);
+        locationSource = new FusedLocationSource(this, LOCATION_PERMISSION_REQUEST_CODE);
 
         //코스 이름
         //infromation에서 넘어온 course_name 받아서 코스 이름으로 저장
         Intent secondIntent = getIntent();
         String c_name = secondIntent.getStringExtra("get_title");
-
 
         //DB에서 코스 거리 불러오기
         FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -197,11 +190,10 @@ public class measure extends AppCompatActivity implements SensorEventListener, O
     @Override
     public void onMapReady(@NonNull NaverMap naverMap) {
         measure.naverMap = naverMap;
-//        naverMap.setLocationSource(locationSource);
-//        naverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
-//
-//        UiSettings uiSettings = naverMap.getUiSettings();
-//        uiSettings.setLocationButtonEnabled(true); //현 위치
+        naverMap.setLocationSource(locationSource);
+
+        UiSettings uiSettings = naverMap.getUiSettings();
+        uiSettings.setLocationButtonEnabled(true); //현 위치
 
         float loc_latitude = Float.parseFloat(loc_la);
         float loc_longitude = Float.parseFloat(loc_long);
@@ -274,18 +266,15 @@ public class measure extends AppCompatActivity implements SensorEventListener, O
     public void onSensorChanged(SensorEvent event) {
         // 걸음 센서 이벤트 발생시
         if(event.sensor.getType() == Sensor.TYPE_STEP_DETECTOR){
-
             if(event.values[0]==1.0f){
                 // 센서 이벤트가 발생할때 마다 걸음수 증가
                 currentSteps++;
             }
-
         }
     }
 
     @Override
     public void onAccuracyChanged(Sensor sensor, int accuracy) {
-
     }
 
     public class timeThread implements Runnable {
